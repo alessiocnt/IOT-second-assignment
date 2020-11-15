@@ -1,19 +1,18 @@
 #ifndef __SCHEDULER__
 #define __SCHEDULER__
 
+#include <iostream.h>
+#include <list.h>
 #include "Task.h"
 
-#define MAX_TASKS 50
-
 class Scheduler {
-  
   int basePeriod;
-  int nTasks;
-  Task* taskList[MAX_TASKS];  
+  std::list<Task> taskList;
 
 public:
   void init(int basePeriod);  
-  virtual bool addTask(Task* task);  
+  virtual void addTask(Task* task);
+  virtual void removeTask(Task* task);
   virtual void schedule();
 };
 

@@ -13,26 +13,23 @@ void Scheduler::init(int basePeriod){
   long period = 1000l*basePeriod;
   Timer1.initialize(period);
   Timer1.attachInterrupt(timerHandler);
-  nTasks = 0;
 }
 
-bool Scheduler::addTask(Task* task){
-  if (nTasks < MAX_TASKS-1){
-    taskList[nTasks] = task;
-    nTasks++;
-    return true;
-  } else {
-    return false; 
-  }
+void Scheduler::addTask(Task* task){
+  taskList.insert(task);
+}
+
+void Scheduler::removeTask(Task* task){
+  taskList.erase(task);
 }
   
 void Scheduler::schedule(){   
   while (!timerFlag){}
   timerFlag = false;
-
-  for (int i = 0; i < nTasks; i++){
-    if (taskList[i]->isActive() && taskList[i]->updateAndCheckTime(basePeriod)){
-      taskList[i]->tick();
+// TODO
+  for (std::list<Task>::iterator it=taskList.begin(); it != taskList.end(); it++){
+    if (it->isActive() && it->updateAndCheckTime(basePeriod)){
+      it->tick();
     }
   }
 }
