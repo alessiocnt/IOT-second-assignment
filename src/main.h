@@ -1,4 +1,5 @@
 #define SLEEP_TIME 5000
+#define MAX_TIME 20000
 
 ReadyTask* readyTask;
 RunningTask* runningTask;
