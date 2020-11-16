@@ -6,7 +6,7 @@ Potentiometer::Potentiometer(int pin){
     pinMode(pin, INPUT);     
 } 
   
-bool Potentiometer::getValue(){
+int Potentiometer::getValue(){
     int value = analogRead(pin);
     return map(value, 0, 1023, 0, 50);
 }

@@ -16,11 +16,11 @@ void Scheduler::init(int basePeriod){
 }
 
 void Scheduler::addTask(Task* task){
-  taskList.insert(task);
+  taskList.add(task);
 }
 
-void Scheduler::removeTask(Task* task){
-  taskList.erase(task);
+void Scheduler::removeTask(int index){
+  taskList.remove(index);
 }
   
 void Scheduler::schedule(){   
