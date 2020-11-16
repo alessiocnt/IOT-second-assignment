@@ -26,9 +26,11 @@ void ReadyTask::tick(){
     } else{
       this->setActive(false);
       runningTask->setActive(true);
+      Serial.println("Run");
     }
   } else{
       this->setActive(false);
       sleepingTask->setActive(true);
+      Serial.println("Sleep");
     }
 }
