@@ -4,7 +4,7 @@
 TemperatureDHT::TemperatureDHT(int pin){
     this->pin = pin;
     pinMode(pin, INPUT);     
-    DHT dht(pin, DHTTYPE);
+    this->dht(pin, DHTTYPE);
 } 
   
 int TemperatureDHT::getValue(){
