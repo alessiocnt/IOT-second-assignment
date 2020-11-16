@@ -4,6 +4,7 @@
 #include "DHT.h"
 #define DHTTYPE DHT11
 
+// Class that models a DHT11 Temperature sensor
 class TemperatureDHT {
 public: 
     TemperatureDHT(int pin);

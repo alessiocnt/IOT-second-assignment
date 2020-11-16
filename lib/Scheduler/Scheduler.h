@@ -4,6 +4,7 @@
 #include <LinkedList.h>
 #include "Task.h"
 
+// Class that models a simple Scheduler
 class Scheduler {
   int basePeriod;
   LinkedList<Task*> taskList;

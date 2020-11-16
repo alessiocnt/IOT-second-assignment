@@ -7,5 +7,5 @@ SleepingTask* sleepingTask;
 // var globali qui per non gestire tutti gli include
 
 // andrebbero in ReadyTask.h
-int currentTemperature;
-int samplingFrequence;
+virtual int currentTemperature;
+virtual int samplingFrequence;

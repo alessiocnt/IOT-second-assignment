@@ -6,6 +6,7 @@
 #include "Potentiometer.h"
 #include "TemperatureDHT.h"
 
+// Class that models a StartTask - Manages the pression on a startButton and its condequences
 class StartTask: public Task {
 private:
   Button* startBtt;
