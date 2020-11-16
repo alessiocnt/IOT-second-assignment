@@ -4,6 +4,7 @@
 #include "Task.h"
 #include "Led.h"
 
+// Class that models a LightsTask - Manages the lights in the first stage of the system
 class LightTask: public Task {
 private:
   Led* led1, led2;

@@ -1,6 +1,7 @@
 #ifndef __TASK__
 #define __TASK__
 
+// Class that models a Task
 class Task {
   int myPeriod;
   int timeElapsed;
@@ -31,7 +32,6 @@ public:
   void setActive(bool active){
     this->active = active;
   }
-  
 };
 
 #endif
