@@ -5,7 +5,7 @@
 class Button {
 public: 
     Button(int pin);
-    virtual bool isPressed() = 0;
+    bool isPressed();
 
 private:
   int pin;

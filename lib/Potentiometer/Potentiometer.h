@@ -7,7 +7,7 @@
 class Potentiometer {
 public: 
     Potentiometer(int pin);
-    virtual int getValue() = 0;
+    int getValue();
 
 private:
   int pin;
