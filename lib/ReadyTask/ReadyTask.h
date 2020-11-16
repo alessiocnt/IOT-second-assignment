@@ -13,12 +13,18 @@
 // Class that models a ReadyTask - Very first stage of the system
 class ReadyTask: public Task {
 private:
-  int timeElapsed;
+  int currentTime;
+  Button* startBtt;
+  Potentiometer* pot;
+  TemperatureDHT* dhtSensor;
+  Led* led1, led2;
 
 public:
   ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor);  
   void init(int period);  
   void tick();
+private:
+  void setupTask();
 };
 
 #endif
