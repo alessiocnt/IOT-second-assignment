@@ -2,7 +2,7 @@
 #include <unity.h>
 #include "Led.h"
 #include "Button.h"
-//#include "TemperatureDHT.h"
+#include "TemperatureDHT.h"
 #include <DHT.h>
 #include "Potentiometer.h"
 #include "Pir.h"
@@ -38,11 +38,15 @@ void testButton(int pin)
 
 void testTemp(int pin)
 {
-    /*TemperatureDHT* tmp = new TemperatureDHT(pin);
+    TemperatureDHT* tmp = new TemperatureDHT(pin);
     Serial.print("Measured temperature using class: ");
     delay(2000);
-    Serial.println(tmp->getValue());*/
-    /*DHT dht(pin, DHTTYPE);
+    for(int i = 0; i < 50; i++) {
+        Serial.println(tmp->getValue());
+        delay(250);
+    }
+    /*delay(1000);
+    DHT dht(pin, DHTTYPE);
     Serial.print("Measured temperature directly from code: ");
     delay(2000);
     Serial.println(dht.readTemperature());*/
@@ -131,9 +135,9 @@ void loop()
     /*testLed(2);
     testLed(3);
     testButton(4);
-    testButton(5);
+    testButton(5);*/
     testTemp(7);
-    testPot(A0);
+    /*testPot(A0);
     testPir(8);
     testSonar(13, 12, 20);
     testServoMotor(6);*/

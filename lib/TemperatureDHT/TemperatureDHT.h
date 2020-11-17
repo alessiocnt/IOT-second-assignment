@@ -5,14 +5,15 @@
 #define DHTTYPE DHT11
 
 // Class that models a DHT11 Temperature sensor
-class TemperatureDHT {
-public: 
+class TemperatureDHT
+{
+public:
     TemperatureDHT(int pin);
-    virtual int getValue() = 0;
+    int getValue();
 
 private:
-  int pin;
-  DHT dht;
+    int pin;
+    DHT* dht;
 };
 
 #endif
