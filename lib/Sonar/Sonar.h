@@ -12,6 +12,7 @@ private:
     int echoPin;
     float temperature;
     float soundSpeed;
+    float lastDistance;
     void updateSoundSpeed(float temperature);
 };
 

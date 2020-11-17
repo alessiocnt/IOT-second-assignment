@@ -7,7 +7,8 @@ Sonar::Sonar(int trigPin, int echoPin, float temperature) {
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
     this->temperature = temperature;
-    this->soundSpeed = updateSoundSpeed(temperature);
+    updateSoundSpeed(temperature);
+    this->lastDistance = -1;
 }
 
 float Sonar::getDistance() {
@@ -20,10 +21,14 @@ float Sonar::getDistance() {
     
     /* ricevi l’eco */
     long tUS = pulseInLong(echoPin, HIGH);
-    Serial.println(tUS);
 
     double t = tUS / 1000.0 / 1000.0 / 2;
     double d = t * soundSpeed;
+    if(d - lastDistance > 5) {
+        // Errore di lettura, scarto il valore ritornando -1
+        return -1;
+    }
+    lastDistance = d;
     return d;
 }
 
@@ -33,5 +38,5 @@ void Sonar::setTemperature(float tempearure) {
 }
 
 void Sonar::updateSoundSpeed(float temperature) {
-    this->soundSpeed = 331.45 + 0.62 * temperature;
+    this->soundSpeed =  331.45 + 0.62 * temperature;
 }
