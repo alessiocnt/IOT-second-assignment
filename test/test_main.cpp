@@ -2,9 +2,10 @@
 #include <unity.h>
 #include "Led.h"
 #include "Button.h"
-#include "TemperatureDHT.h"
+//#include "TemperatureDHT.h"
 #include <DHT.h>
 #include "Potentiometer.h"
+#include "Pir.h"
 
 void testLed(int pin) {
     Led* led = new Led(pin);
@@ -35,10 +36,10 @@ void testTemp(int pin){
     Serial.print("Measured temperature using class: ");
     delay(2000);
     Serial.println(tmp->getValue());*/
-    DHT dht(pin, DHTTYPE);
+    /*DHT dht(pin, DHTTYPE);
     Serial.print("Measured temperature directly from code: ");
     delay(2000);
-    Serial.println(dht.readTemperature());
+    Serial.println(dht.readTemperature());*/
 }
 
 void testPot(int pin) {
@@ -53,6 +54,22 @@ void testPot(int pin) {
     }
 }
 
+void testPir(int pin) {
+    Pir* pir = new Pir(pin);
+    Serial.println("You now have 5 seconds to move in front of the pir");
+    delay(1000);
+    long t = millis();
+    while (millis() - t < 5000)
+    {
+        if (pir->getMovement())
+        {
+            Serial.println("Movement detected");
+        }
+        
+    }
+    
+}
+
 
 void setup() {
     // NOTE!!! Wait for >2 secs
@@ -62,12 +79,13 @@ void setup() {
 }
 
 void loop() {
-    testLed(2);
+    /*testLed(2);
     testLed(3);
     testButton(4);
     testButton(5);
     testTemp(7);
-    testPot(A0);
+    testPot(A0);*/
+    testPir(8);
     UNITY_END();
     return;
 }
