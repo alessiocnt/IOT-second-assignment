@@ -10,8 +10,11 @@ class RunningTask: public Task {
 private:
   int currentTime;
   Button* stopBtt;
+  Sonar* sonar;
+  void setupTask();
+  
 public:
-  RunningTask(Button* stopBtt);  
+  RunningTask(Button* stopBtt, Sonar* sonar);  
   void init(int period);  
   void tick();
 };

@@ -18,13 +18,12 @@ private:
   Potentiometer* pot;
   TemperatureDHT* dhtSensor;
   Led* led1, led2;
+  void setupTask();
 
 public:
   ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor);  
   void init(int period);  
   void tick();
-private:
-  void setupTask();
 };
 
 #endif
