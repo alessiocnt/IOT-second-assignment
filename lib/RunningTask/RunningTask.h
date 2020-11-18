@@ -13,10 +13,11 @@ private:
   int currentTime;
   Button* stopBtt;
   Sonar* sonar;
+  Led* led2;
   void setupTask();
   
 public:
-  RunningTask(Button* stopBtt, Sonar* sonar);  
+  RunningTask(Button* stopBtt, Sonar* sonar, Led* led2);  
   void init(int period);  
   void tick();
 };

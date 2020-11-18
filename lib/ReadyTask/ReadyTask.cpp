@@ -1,7 +1,6 @@
 #include "ReadyTask.h"
 
 ReadyTask::ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor){
-  // TODO metterle var globali non farebbe male...
   this->led1 = led1;    
   this->led2 = led2;
   this->startBtt=startBtt;
@@ -26,6 +25,7 @@ void ReadyTask::tick(){
     if(startBtt->isPressed()){
       currentTemperature = dhtSensor->getValue();
       samplingFrequence = pot->getValue();
+      executingTask->set....(samplingFrequence);
       this->setActive(false);
       setupTask();
       runningTask->setActive(true);
