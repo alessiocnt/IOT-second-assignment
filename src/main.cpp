@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include "Led.h"
+#include "ErrorTask.h"
+#include "main.h"
 
 void setup() {
   Led* led = new Led(13);

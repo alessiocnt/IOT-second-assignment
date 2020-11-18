@@ -1,4 +1,3 @@
-
 #ifndef __READYTASK__
 #define __READYTASK__
 
@@ -7,8 +6,6 @@
 #include "Button.h"
 #include "Potentiometer.h"
 #include "TemperatureDHT.h"
-// #include "LightsTask.h"
-// #include "StartTask.h"
 
 // Class that models a ReadyTask - Very first stage of the system
 class ReadyTask: public Task {
