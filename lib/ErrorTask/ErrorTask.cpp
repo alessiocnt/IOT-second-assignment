@@ -1,39 +1,22 @@
 #include "ErrorTask.h"
 
-ErrorTask::ErrorTask(Led* led2){
+ErrorTask::ErrorTask(Led* led2, BlinkTask* blinkTask){
     this->led2 = led2;
+    this->blinkTask = blinkTask;
 }
-// Il period si traduce in tempo di blink
+//Perchè non dia interferenza al blinking è necessario scegliere un periodo > ERROR_TIME (tempo di blinking)
 void ErrorTask::init(int period){
     Task::init(period);
-    setupTask();
 }
-  
+
 void ErrorTask::tick(){
-    currentTime += this->myPeriod;
-    if(currentTime < ERROR_TIME) { 
-        switch (lightState){
-            case OFF:
-                led2->switchOn();
-                lightState = ON; 
-                break;
-            case ON:
-                led2->switchOff();
-                lightState = OFF;
-                break;
-        }
-    } else {
+    blinkTask->setActive(true);
+    blinkTask->init(this->myPeriod, led2, ERROR_TIME);
+
+    if(!blinkTask->isActive()){
         this->setActive(false);
-        if(lightState == ON){
-            led2->switchOff();
-        }
-        setupTask();
+        led2->switchOff();
         endTask->setActive(true);
         Serial.println("End");
     }
-}
-
-void ErrorTask::setupTask() {
-    currentTime = 0;
-    lightState = OFF;
 }

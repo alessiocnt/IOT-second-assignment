@@ -1,8 +1,8 @@
 #include "ReadyTask.h"
 #include "RunningTask.h"
 #include "SleepingTask.h"
-//#include "ExecutingTask"
-//#include "EndTask"
+#include "ExecutingTask.h"
+#include "EndTask.h"
 #include "ErrorTask.h"
 
 #define SLEEP_TIME 5000
@@ -12,15 +12,8 @@
 
 ReadyTask* readyTask;
 RunningTask* runningTask;
-//SleepingTask* sleepingTask;
+SleepingTask* sleepingTask;
 ErrorTask* errorTask;
-
-// var globali qui per non gestire tutti gli include
-
-// andrebbero in ReadyTask.h
-volatile int currentTemperature;
-volatile int samplingFrequence;
-// SleepingTask* sleepingTask;
-//ExecutingTask* executingTask;
+ExecutingTask* executingTask;
 ErrorTask* errorTask;
-//EndTask* endTask;
+EndTask* endTask;
