@@ -35,7 +35,7 @@ void ErrorTask::tick(){
 // Setup task non e' tra le funzioni definite all'interno di ErrorTask, quindi non puo' essere definita tramite 
 // ErrorTask::setupTask, bisogna metterla tra le funzioni private di ErrorTask.h oppure definirla statica, 
 // definendola statica non ha pero' accesso alle variabili contenute in ErrorTask
-void setupTask() {
+void ErrorTask::setupTask() {
     currentTime = 0;
     lightState = OFF;
 }

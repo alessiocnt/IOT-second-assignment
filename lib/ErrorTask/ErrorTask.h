@@ -10,8 +10,8 @@ class ErrorTask: public Task {
 private:
     Led* led2;
     int currentTime;
-    void setupTask();
     enum {ON, OFF} lightState;
+    void setupTask();
 
 public:
     ErrorTask(Led* led2);  

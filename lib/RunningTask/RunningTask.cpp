@@ -41,6 +41,6 @@ void RunningTask::tick(){
   }
 }
 
-void ReadyTask::setupTask(){
+void RunningTask::setupTask(){
   currentTime = 0;
 }
