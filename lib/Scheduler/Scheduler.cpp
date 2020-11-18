@@ -24,6 +24,7 @@ void Scheduler::removeTask(int index){
 }
   
 void Scheduler::schedule(){   
+  //BasePeriod max 20ms
   while (!timerFlag){}
   timerFlag = false;
 // TODO

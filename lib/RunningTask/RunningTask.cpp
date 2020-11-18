@@ -20,7 +20,7 @@ void RunningTask::tick(){
   */
  // if non rilevo nulla -> error
  // else -> executing
-    if(sonar->getDistance() > 1){
+    if(sonar->getDistance() > 3){
       this->setActive(false);
       setupTask();
       errorTask->setActive(true);
