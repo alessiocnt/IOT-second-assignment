@@ -1,7 +1,9 @@
 #ifndef __ERRORTASK__
 #define __ERRORTASK__
 
+#include <Arduino.h>
 #include "Task.h"
+#include "Led.h"
 
 // Class that models an ErrorTask - led blinking
 class ErrorTask: public Task {

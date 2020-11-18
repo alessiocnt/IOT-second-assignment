@@ -1,6 +1,6 @@
 #include "ReadyTask.h"
 
-ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor){
+ReadyTask::ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor){
   // TODO metterle var globali non farebbe male...
   this->led1 = led1;    
   this->led2 = led2;

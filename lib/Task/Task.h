@@ -2,36 +2,45 @@
 #define __TASK__
 
 // Class that models a Task
-class Task {
-  int myPeriod;
-  int timeElapsed;
-  bool active;
-  
+class Task
+{
 public:
-  virtual void init(int period){
-    myPeriod = period;  
-    timeElapsed = 0;
-  }
-
-  virtual void tick() = 0;
-
-  bool updateAndCheckTime(int basePeriod){
-    timeElapsed += basePeriod;
-    if (timeElapsed >= myPeriod){
-      timeElapsed = 0;
-      return true;
-    } else {
-      return false; 
+    int myPeriod;
+    virtual void init(int period)
+    {
+        myPeriod = period;
+        timeElapsed = 0;
     }
-  }
 
-  bool isActive(){
-    return active;
-  }
+    virtual void tick() = 0;
 
-  void setActive(bool active){
-    this->active = active;
-  }
+    bool updateAndCheckTime(int basePeriod)
+    {
+        timeElapsed += basePeriod;
+        if (timeElapsed >= myPeriod)
+        {
+            timeElapsed = 0;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    bool isActive()
+    {
+        return active;
+    }
+
+    void setActive(bool active)
+    {
+        this->active = active;
+    }
+
+private:
+    int timeElapsed;
+    bool active;
 };
 
 #endif

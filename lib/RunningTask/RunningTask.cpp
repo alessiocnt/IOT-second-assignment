@@ -1,8 +1,8 @@
 #include "RunningTask.h"
 
-RunningTask(Button* stopBtt, Sonar* sonar){
+RunningTask::RunningTask(Button* stopBtt, Sonar* sonar){
   this->stopBtt = stopBtt;
-  this->Sonar = sonar;
+  this->sonar = sonar;
 }
   
 void RunningTask::init(int period){

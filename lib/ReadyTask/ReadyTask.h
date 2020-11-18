@@ -7,8 +7,8 @@
 #include "Button.h"
 #include "Potentiometer.h"
 #include "TemperatureDHT.h"
-#include "LightsTask.h"
-#include "StartTask.h"
+// #include "LightsTask.h"
+// #include "StartTask.h"
 
 // Class that models a ReadyTask - Very first stage of the system
 class ReadyTask: public Task {
@@ -17,7 +17,8 @@ private:
   Button* startBtt;
   Potentiometer* pot;
   TemperatureDHT* dhtSensor;
-  Led* led1, led2;
+  Led* led1;
+  Led* led2;
   void setupTask();
 
 public:

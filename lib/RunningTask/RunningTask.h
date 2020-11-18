@@ -1,9 +1,10 @@
-
 #ifndef __RUNNINGTASK__
 #define __RUNNINGTASK__
 
+#include <Arduino.h>
 #include "Task.h"
 #include "Button.h"
+#include "Sonar.h"
 
 // Class that models a RunningTask - From ButtonStart to object relevation
 class RunningTask: public Task {

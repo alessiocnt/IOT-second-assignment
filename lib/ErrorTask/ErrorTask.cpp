@@ -1,6 +1,6 @@
 #include "ErrorTask.h"
 
-ErrorTask(Led* led2){
+ErrorTask::ErrorTask(Led* led2){
     this->led2 = led2;
 }
   
@@ -11,7 +11,7 @@ void ErrorTask::init(int period){
   
 void ErrorTask::tick(){
     currentTime += this->myPeriod;
-    if(currentTime < ERROR_TIME){ 
+    if(currentTime < /*ERROR_TIME*/ 7) { 
         switch (lightState){
             case OFF:
                 led2->switchOn();
@@ -21,7 +21,8 @@ void ErrorTask::tick(){
                 led2->switchOff();
                 lightState = OFF;
                 break;
-    }else{
+        }
+    } else {
         this->setActive(false);
         setupTask();
         endTask->setActive(true);
@@ -29,7 +30,12 @@ void ErrorTask::tick(){
     }
 }
 
-void ErrorTask::setupTask(){
+
+// TODO
+// Setup task non e' tra le funzioni definite all'interno di ErrorTask, quindi non puo' essere definita tramite 
+// ErrorTask::setupTask, bisogna metterla tra le funzioni private di ErrorTask.h oppure definirla statica, 
+// definendola statica non ha pero' accesso alle variabili contenute in ErrorTask
+void setupTask() {
     currentTime = 0;
     lightState = OFF;
 }
