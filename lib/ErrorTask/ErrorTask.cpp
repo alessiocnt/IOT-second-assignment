@@ -3,7 +3,7 @@
 ErrorTask::ErrorTask(Led* led2){
     this->led2 = led2;
 }
-  
+// Il period si traduce in tempo di blink
 void ErrorTask::init(int period){
     Task::init(period);
     setupTask();
@@ -11,7 +11,7 @@ void ErrorTask::init(int period){
   
 void ErrorTask::tick(){
     currentTime += this->myPeriod;
-    if(currentTime < /*ERROR_TIME*/ 7) { 
+    if(currentTime < ERROR_TIME) { 
         switch (lightState){
             case OFF:
                 led2->switchOn();
@@ -24,17 +24,15 @@ void ErrorTask::tick(){
         }
     } else {
         this->setActive(false);
+        if(lightState == ON){
+            led2->switchOff();
+        }
         setupTask();
         endTask->setActive(true);
         Serial.println("End");
     }
 }
 
-
-// TODO
-// Setup task non e' tra le funzioni definite all'interno di ErrorTask, quindi non puo' essere definita tramite 
-// ErrorTask::setupTask, bisogna metterla tra le funzioni private di ErrorTask.h oppure definirla statica, 
-// definendola statica non ha pero' accesso alle variabili contenute in ErrorTask
 void ErrorTask::setupTask() {
     currentTime = 0;
     lightState = OFF;

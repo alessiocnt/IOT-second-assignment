@@ -2,6 +2,7 @@
 #define __ERRORTASK__
 
 #include <Arduino.h>
+#include "header.h"
 #include "Task.h"
 #include "Led.h"
 

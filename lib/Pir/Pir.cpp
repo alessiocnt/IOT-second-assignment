@@ -9,3 +9,7 @@ Pir::Pir(int pin) {
 bool Pir::getMovement() {
     return digitalRead(pin) == HIGH;
 }
+
+int Pir::getPin() {
+    return pin;
+}

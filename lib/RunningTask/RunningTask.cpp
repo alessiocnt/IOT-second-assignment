@@ -1,8 +1,9 @@
 #include "RunningTask.h"
 
-RunningTask::RunningTask(Button* stopBtt, Sonar* sonar){
+RunningTask::RunningTask(Button* stopBtt, Sonar* sonar, Led* led2){
   this->stopBtt = stopBtt;
   this->sonar = sonar;
+  this->led2 = led2;
 }
   
 void RunningTask::init(int period){
@@ -12,12 +13,7 @@ void RunningTask::init(int period){
   
 void RunningTask::tick(){
   currentTime += this->myPeriod;
-  if(currentTime < MAX_TIME){ // da VALUTARE SE FARE QUI O NESSLO STATO DOPO
-  /**TODO
-   * qunado rileva l'oggetto cambia stato e passa ad executing -> se execTask
-   * ha un metodo per cui gli posso settare il current time trascorso dall'inizio de problema ok
-   * così evitiamo var globale.
-  */
+  if(currentTime < MAX_TIME){
  // if non rilevo nulla -> error
  // else -> executing
     if(sonar->getDistance() > 3){
@@ -29,8 +25,8 @@ void RunningTask::tick(){
       this->setActive(false);
       setupTask();
       executingTask->setActive(true);
-      ////ExecutingTask->setCurrentTime(currentTime);
-      ////led2->accendi() se prende la temperatura lui meglio accenderlo qui!
+      executingTask->setCurrentTime(currentTime);
+      led2->switchOn();
       Serial.println("Executing");
     }
   }else{

@@ -1,7 +1,6 @@
 #include "ReadyTask.h"
 
 ReadyTask::ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor){
-  // TODO metterle var globali non farebbe male...
   this->led1 = led1;    
   this->led2 = led2;
   this->startBtt=startBtt;
@@ -24,8 +23,8 @@ void ReadyTask::tick(){
     }
     // Controllo la pressione del pulsante start, se premuto cambio task
     if(startBtt->isPressed()){
-      currentTemperature = dhtSensor->getValue();
-      samplingFrequence = pot->getValue();
+      executingTask->setSamplingFrequence(pot->getValue());
+      executingTask->setTemperature(dhtSensor->getValue());
       this->setActive(false);
       setupTask();
       runningTask->setActive(true);
@@ -35,6 +34,7 @@ void ReadyTask::tick(){
     this->setActive(false);
     setupTask();
     sleepingTask->setActive(true);
+    led1->switchOff();
     Serial.println("Sleep");
   }
 }
