@@ -11,7 +11,7 @@
 
 void testLed(int pin)
 {
-    Led *led = new Led(pin);
+    Led* led = new Led(pin);
     Serial.print("Turning on for 1 sec led on pin: ");
     Serial.println(pin);
     led->switchOn();
@@ -132,15 +132,15 @@ void setup()
 
 void loop()
 {
-    /*testLed(2);
+    testLed(2);
     testLed(3);
     testButton(4);
-    testButton(5);*/
+    testButton(5);
     testTemp(7);
-    /*testPot(A0);
+    testPot(A0);
     testPir(8);
     testSonar(13, 12, 20);
-    testServoMotor(6);*/
+    testServoMotor(6);
     UNITY_END();
     return;
 }
