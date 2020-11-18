@@ -23,9 +23,8 @@ void ReadyTask::tick(){
     }
     // Controllo la pressione del pulsante start, se premuto cambio task
     if(startBtt->isPressed()){
-      currentTemperature = dhtSensor->getValue();
-      samplingFrequence = pot->getValue();
-      executingTask->set....(samplingFrequence);
+      executingTask->setSamplingFrequence(pot->getValue());
+      executingTask->setTemperature(dhtSensor->getValue());
       this->setActive(false);
       setupTask();
       runningTask->setActive(true);
@@ -35,6 +34,7 @@ void ReadyTask::tick(){
     this->setActive(false);
     setupTask();
     sleepingTask->setActive(true);
+    led1->switchOff();
     Serial.println("Sleep");
   }
 }
