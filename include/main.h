@@ -13,7 +13,6 @@ RunningTask* runningTask;
 SleepingTask* sleepingTask;
 ErrorTask* errorTask;
 ExecutingTask* executingTask;
-ErrorTask* errorTask;
 EndTask* endTask;
 
 #endif

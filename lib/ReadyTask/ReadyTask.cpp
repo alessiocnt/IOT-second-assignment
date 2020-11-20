@@ -26,7 +26,7 @@ void ReadyTask::tick(){
     }
     // Controllo la pressione del pulsante start, se premuto cambio task
     if(startBtt->isPressed()){
-      executingTask->setSamplingFrequence(pot->getValue());
+      executingTask->setSamplingFrequency(pot->getValue());
       executingTask->setTemperature(dhtSensor->getValue());
       this->setActive(false);
       setupTask();
