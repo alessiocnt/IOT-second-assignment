@@ -5,13 +5,15 @@
 #include "BlinkTask.h"
 #include "MsgService.h"
 #include "Led.h"
+#include "ReadyTask.h"
 
 class EndTask : public Task {
 private:
     BlinkTask* blinkTask;
     Led* led;
+    ReadyTask* readyTask;
 public:
-    EndTask(BlinkTask* blinkTask, Led* led);
+    EndTask(BlinkTask* blinkTask, Led* led, ReadyTask* readyTask);
     void init(int period);
     void tick();
     
