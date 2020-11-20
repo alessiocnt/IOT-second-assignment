@@ -9,7 +9,7 @@
 #include "TemperatureDHT.h"
 
 // Class that models a ReadyTask - Very first stage of the system
-class ReadyTask : public Task {
+class ReadyTask: public Task {
 private:
   int currentTime;
   Button* startBtt;
