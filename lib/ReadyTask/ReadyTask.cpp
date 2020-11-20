@@ -1,11 +1,14 @@
 #include "ReadyTask.h"
 
-ReadyTask::ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor){
+ReadyTask::ReadyTask(Led* led1, Led* led2, Button* startBtt, Potentiometer* pot, TemperatureDHT* dhtSensor, ExecutingTask* executingTask, RunningTask* runningTask, SleepingTask* sleepingTask){
   this->led1 = led1;    
   this->led2 = led2;
   this->startBtt=startBtt;
   this->pot=pot;
   this->dhtSensor=dhtSensor;
+  this->runningTask = runningTask;
+  this->executingTask = executingTask;
+  this->sleepingTask = sleepingTask;
 }
   
 void ReadyTask::init(int period){
@@ -35,7 +38,7 @@ void ReadyTask::tick(){
     setupTask();
     sleepingTask->setActive(true);
     led1->switchOff();
-    Serial.println("Sleep");
+    MsgService.sendMsg("Sleep");
   }
 }
 

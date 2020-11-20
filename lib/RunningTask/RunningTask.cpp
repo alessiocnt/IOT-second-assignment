@@ -1,9 +1,12 @@
 #include "RunningTask.h"
 
-RunningTask::RunningTask(Button* stopBtt, Sonar* sonar, Led* led2){
+RunningTask::RunningTask(Button* stopBtt, Sonar* sonar, Led* led2, ErrorTask* errorTask, ExecutingTask* executingTask, EndTask* endTask){
   this->stopBtt = stopBtt;
   this->sonar = sonar;
   this->led2 = led2;
+  this->errorTask = errorTask;
+  this->executingTask = executingTask;
+  this->endTask = endTask;
 }
   
 void RunningTask::init(int period){
@@ -14,26 +17,24 @@ void RunningTask::init(int period){
 void RunningTask::tick(){
   currentTime += this->myPeriod;
   if(currentTime < MAX_TIME){
- // if non rilevo nulla -> error
- // else -> executing
     if(sonar->getDistance() > 3){
       this->setActive(false);
       setupTask();
       errorTask->setActive(true);
-      Serial.println("Error");
+      MsgService.sendMsg("Error");
     }else{
       this->setActive(false);
       setupTask();
       executingTask->setActive(true);
       executingTask->setCurrentTime(currentTime);
       led2->switchOn();
-      Serial.println("Executing");
+      MsgService.sendMsg("Executing");
     }
   }else{
     this->setActive(false);
     setupTask();
     endTask->setActive(true);
-    Serial.println("End");
+    MsgService.sendMsg("End");
   }
 }
 

@@ -1,8 +1,9 @@
 #include "SleepingTask.h"
 
-SleepingTask::SleepingTask(Pir* pir)
+SleepingTask::SleepingTask(Pir* pir, ReadyTask* readyTask)
 {
     this->pir = pir;
+    this->readyTask = readyTask;
 }
 
 void SleepingTask::init(int period)
@@ -20,17 +21,16 @@ void SleepingTask::tick()
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
     sleep_enable();
     sleep_mode();
-    //L'esecuzione riprende qui
-    //Sleep mode OFF
+    //L'esecuzione riprende qui - Sleep mode OFF
     sleep_disable();
     //Interrupt disabilitati per evitare che il pir legga movimenti non voluti
     disableInterrupt(pir->getPin());
     this->setActive(false);
     readyTask->setActive(true);
-    Serial.println("Ready");
+    MsgService.sendMsg("Ready");
 }
 
 void SleepingTask::wakeUp()
 {
-    Serial.println("Awake");
+    MsgService.sendMsg("Awake");
 }
