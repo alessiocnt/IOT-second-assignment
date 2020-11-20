@@ -1,3 +1,6 @@
+#ifndef __HEADER__
+#define __HEADER__
+
 #include "ReadyTask.h"
 #include "RunningTask.h"
 #include "SleepingTask.h"
@@ -17,3 +20,5 @@ ErrorTask* errorTask;
 ExecutingTask* executingTask;
 ErrorTask* errorTask;
 EndTask* endTask;
+
+#endif
