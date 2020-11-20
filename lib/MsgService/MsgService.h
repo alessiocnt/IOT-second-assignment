@@ -5,12 +5,10 @@
 
 class Msg {
   String content;
-
 public:
   Msg(String content){
     this->content = content;
   }
-  
   String getContent(){
     return content;
   }
@@ -22,9 +20,7 @@ public:
 };
 
 class MsgServiceClass {
-    
 public: 
-  
   Msg* currentMsg;
   bool msgAvailable;
 
@@ -32,9 +28,7 @@ public:
 
   bool isMsgAvailable();
   Msg* receiveMsg();
-
   bool isMsgAvailable(Pattern& pattern);
-
   /* note: message deallocation is responsibility of the client */
   Msg* receiveMsg(Pattern& pattern);
   

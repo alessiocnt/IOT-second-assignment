@@ -2,7 +2,6 @@
 #include "MsgService.h"
 
 String content;
-
 MsgServiceClass MsgService;
 
 bool MsgServiceClass::isMsgAvailable(){
@@ -60,7 +59,6 @@ Msg* MsgServiceClass::receiveMsg(Pattern& pattern){
   } else {
     return NULL; 
   }
-  
 }
 
 
