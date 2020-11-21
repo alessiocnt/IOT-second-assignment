@@ -6,7 +6,9 @@
 #include "Task.h"
 #include "Led.h"
 #include "BlinkTask.h"
+#include "MsgService.h"
 #include "EndTask.h"
+#include "ReadyTask.h"
 
 // Class that models an ErrorTask - led blinking
 class ErrorTask: public Task {

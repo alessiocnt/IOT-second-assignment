@@ -9,8 +9,14 @@
 #define MAXFREQ 50
 // MAXVEL TBD
 
+// Necessaria forward declaration in quanto le inclusioni di alcuni task devono essere ad anello
 class EndTask;
 class ReadyTask;
 class SleepingTask;
+class BlinkTask;
+class EndExperimentTask;
+class ErrorTask;
+class ExecutingTask;
+class RunningTask;
 
 #endif

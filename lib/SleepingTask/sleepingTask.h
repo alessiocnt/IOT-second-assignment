@@ -8,6 +8,7 @@
 #include "Task.h"
 #include "Pir.h"
 #include "MsgService.h"
+#include "ReadyTask.h"
 
 // Class that models a SleepingTask - Puts the system in sleep mode
 class SleepingTask: public Task {
