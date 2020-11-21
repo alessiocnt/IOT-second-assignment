@@ -28,9 +28,9 @@ void Scheduler::schedule(){
   while (!timerFlag){}
   timerFlag = false;
 // TODO
-  for (std::list<Task>::iterator it=taskList.begin(); it != taskList.end(); it++){
+  /*for (std::list<Task>::iterator it=taskList.begin(); it != taskList.end(); it++){
     if (it->isActive() && it->updateAndCheckTime(basePeriod)){
       it->tick();
     }
-  }
+  }*/
 }

@@ -2,13 +2,32 @@
 #include "main.h"
 #include "Led.h"
 #include "header.h"
+#include "Scheduler.h"
 
-void setup() {
-  Led* led = new Led(13);
-  led->switchOn();
-  // put your setup code here, to run once:
+extern ReadyTask* readyTask;
+extern RunningTask* runningTask;
+extern SleepingTask* sleepingTask;
+extern ExecutingTask* executingTask;
+extern EndTask* endTask;
+extern ErrorTask* errorTask;
+extern BlinkTask* blinkTask;
+
+Scheduler* scheduler = new Scheduler();
+
+
+void setup()
+{
+    // put your setup code here, to run once:
+    scheduler->addTask(readyTask);
+    scheduler->addTask(runningTask);
+    scheduler->addTask(sleepingTask);
+    scheduler->addTask(executingTask);
+    scheduler->addTask(endTask);
+    scheduler->addTask(errorTask);
+    scheduler->addTask(blinkTask);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
+    // put your main code here, to run repeatedly:
 }

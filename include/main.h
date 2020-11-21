@@ -14,5 +14,6 @@ SleepingTask* sleepingTask;
 ErrorTask* errorTask;
 ExecutingTask* executingTask;
 EndTask* endTask;
+BlinkTask* blinkTask;
 
 #endif
