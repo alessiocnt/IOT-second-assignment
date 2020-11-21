@@ -9,4 +9,8 @@
 #define MAXFREQ 50
 // MAXVEL TBD
 
+class EndTask;
+class ReadyTask;
+class SleepingTask;
+
 #endif
