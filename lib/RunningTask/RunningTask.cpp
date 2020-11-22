@@ -15,14 +15,18 @@ void RunningTask::init(int period){
 }
   
 void RunningTask::tick(){
+  MsgService.sendMsg("A"); // togli
   currentTime += this->myPeriod;
   if(currentTime < MAX_TIME){
+    MsgService.sendMsg("B"); // togli
     if(sonar->getDistance() > 3){
+      MsgService.sendMsg("C"); // togli
       this->setActive(false);
       setupTask();
       errorTask->setActive(true);
       MsgService.sendMsg("Error");
     }else{
+      MsgService.sendMsg("Executing_1"); // togli
       this->setActive(false);
       setupTask();
       executingTask->setActive(true);

@@ -55,15 +55,16 @@ void setupTasks() {
     readyTask->init(50);
     scheduler.addTask(readyTask);
 
-    runningTask->init(MCD);
+    runningTask->init(50);
     scheduler.addTask(runningTask);
 
-    sleepingTask->init(MCD);
+    sleepingTask->init(25);
     scheduler.addTask(sleepingTask);
 
     errorTask->init(MCD);
     scheduler.addTask(errorTask);
     
+    executingTask->init(MCD);
     scheduler.addTask(executingTask);
 
     endExperimentTask->init(MCD);
@@ -91,5 +92,5 @@ void setup()
 void loop()
 {
     scheduler.schedule();
-    //readyTask->tick();
+    //sleepingTask->tick();
 }
