@@ -17,17 +17,14 @@ Scheduler* scheduler = new Scheduler();
 
 void setup()
 {
-    // put your setup code here, to run once:
-    scheduler->addTask(readyTask);
-    scheduler->addTask(runningTask);
-    scheduler->addTask(sleepingTask);
-    scheduler->addTask(executingTask);
-    scheduler->addTask(endTask);
-    scheduler->addTask(errorTask);
-    scheduler->addTask(blinkTask);
+    createSensors();
 }
 
 void loop()
 {
     // put your main code here, to run repeatedly:
+}
+
+void createSensors() {
+    
 }
