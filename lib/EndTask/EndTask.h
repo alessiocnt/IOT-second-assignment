@@ -13,7 +13,7 @@ private:
     Led* led;
     ReadyTask* readyTask;
 public:
-    EndTask(BlinkTask* blinkTask, Led* led, ReadyTask* readyTask);
+    EndTask(BlinkTask* blinkTask, Led* led2, ReadyTask* readyTask);
     void init(int period);
     void tick();
     

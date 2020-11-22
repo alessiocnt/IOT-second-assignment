@@ -4,13 +4,13 @@
 #include "header.h"
 #include "Scheduler.h"
 
-extern Task* readyTask;
-extern Task* runningTask;
-extern Task* sleepingTask;
-extern Task* executingTask;
-extern Task* endTask;
-extern Task* errorTask;
-extern Task* blinkTask;
+extern ReadyTask* readyTask;
+extern RunningTask* runningTask;
+extern SleepingTask* sleepingTask;
+extern ExecutingTask* executingTask;
+extern EndTask* endTask;
+extern ErrorTask* errorTask;
+extern BlinkTask* blinkTask;
 
 TemperatureDHT* temperatureDHT;
 Potentiometer* potentiometer;

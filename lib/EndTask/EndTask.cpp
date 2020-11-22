@@ -1,6 +1,6 @@
 #include "EndTask.h"
 
-EndTask::EndTask(BlinkTask* blinkTask, Led* led, ReadyTask* readyTask) {
+EndTask::EndTask(BlinkTask* blinkTask, Led* led2, ReadyTask* readyTask) {
     this->blinkTask = blinkTask;
     this->led = led;
     this->readyTask = readyTask;
