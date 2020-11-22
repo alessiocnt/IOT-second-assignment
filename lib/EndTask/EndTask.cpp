@@ -8,7 +8,7 @@ EndTask::EndTask(BlinkTask* blinkTask, Led* led, ReadyTask* readyTask) {
 
 void EndTask::init(int period) {
     Task::init(period);
-    blinkTask->init(period, led, -1);
+    blinkTask->init(period, led, BLINK_FOREVER);
 }
 
 void EndTask::tick() {

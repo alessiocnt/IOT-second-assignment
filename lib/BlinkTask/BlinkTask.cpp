@@ -12,7 +12,7 @@ void BlinkTask::init(int period, Led* led, int timeToBlink){
   
 void BlinkTask::tick(){
     currentTime += this->myPeriod;
-    if(currentTime < timeToBlink){ 
+    if(currentTime < timeToBlink || timeToBlink == BLINK_FOREVER){ 
         switch (lightState){
             case OFF:
             led->switchOn();

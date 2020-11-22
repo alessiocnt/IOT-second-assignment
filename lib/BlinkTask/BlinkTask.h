@@ -5,6 +5,8 @@
 #include "Led.h"
 #include "header.h"
 
+#define BLINK_FOREVER -1
+
 // Class that models a BlinkTask - led blinking
 // N.B. period deve essere divisore di timeToBlink per avere un funzionamento ottimale
 class BlinkTask: public Task {
