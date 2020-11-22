@@ -4,6 +4,7 @@
 #include "Led.h"
 #include "header.h"
 #include "Scheduler.h"
+#include "MsgService.h"
 
 ReadyTask* readyTask;
 RunningTask* runningTask;
@@ -50,7 +51,7 @@ void createTasks() {
 }
 
 void setupTasks() {
-    int MCD = 50; // TODO 
+    int MCD = 500; // TODO 
     readyTask->init(MCD);
     scheduler.addTask(readyTask);
 
@@ -79,10 +80,13 @@ void setup()
     createSensors();
     createTasks();
     setupTasks();
+    MsgService.init();
+    scheduler.init(25);
     readyTask->setActive(true);
 }
 
 void loop()
 {
     scheduler.schedule();
+    //readyTask->tick();
 }
