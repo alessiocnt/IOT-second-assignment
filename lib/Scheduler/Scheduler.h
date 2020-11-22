@@ -12,7 +12,6 @@ class Scheduler {
 public:
   void init(int basePeriod);  
   virtual void addTask(Task* task);
-  virtual void removeTask(int index);
   virtual void schedule();
 };
 

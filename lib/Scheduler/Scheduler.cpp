@@ -1,6 +1,7 @@
 #include "Scheduler.h"
 #include <TimerOne.h>
 
+
 volatile bool timerFlag;
 
 void timerHandler(void){
@@ -18,19 +19,16 @@ void Scheduler::init(int basePeriod){
 void Scheduler::addTask(Task* task){
   taskList.add(task);
 }
-
-void Scheduler::removeTask(int index){
-  taskList.remove(index);
-}
   
 void Scheduler::schedule(){   
   //BasePeriod max 20ms
   while (!timerFlag){}
   timerFlag = false;
-// TODO
-  /*for (std::list<Task>::iterator it=taskList.begin(); it != taskList.end(); it++){
+
+  for (int i = 0; i < taskList.size(); i++){
+    Task* it = taskList.get(i);
     if (it->isActive() && it->updateAndCheckTime(basePeriod)){
       it->tick();
     }
-  }*/
+  }
 }
