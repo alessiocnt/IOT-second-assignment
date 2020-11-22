@@ -23,6 +23,7 @@ void ReadyTask::tick(){
     if(currentTime == this->myPeriod){
       led1->switchOn();
       led2->switchOff();
+      delay(1000);// togli
     }
     // Controllo la pressione del pulsante start, se premuto cambio task
     if(startBtt->isPressed()){

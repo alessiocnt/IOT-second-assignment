@@ -13,7 +13,7 @@ void ExecutingTask::init(int period) {
 }
 
 void ExecutingTask::setSamplingFrequency(int frequency) {
-    this->init(1000 / frequency);
+    //this->init(1000 / frequency);
 }
 
 void ExecutingTask::setCurrentTime(int time) {
