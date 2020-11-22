@@ -52,7 +52,7 @@ void createTasks() {
 
 void setupTasks() {
     int MCD = 500; // TODO 
-    readyTask->init(MCD);
+    readyTask->init(50);
     scheduler.addTask(readyTask);
 
     runningTask->init(MCD);
