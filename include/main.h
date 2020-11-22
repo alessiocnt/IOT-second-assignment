@@ -8,12 +8,5 @@
 #include "EndTask.h"
 #include "ErrorTask.h"
 
-extern ReadyTask* readyTask;
-extern RunningTask* runningTask;
-extern SleepingTask* sleepingTask;
-extern ExecutingTask* executingTask;
-extern EndTask* endTask;
-extern ErrorTask* errorTask;
-extern BlinkTask* blinkTask;
 
 #endif

@@ -1,16 +1,17 @@
 #include <Arduino.h>
+#include <EnableInterrupt.h>
 #include "main.h"
 #include "Led.h"
 #include "header.h"
 #include "Scheduler.h"
 
-extern ReadyTask* readyTask;
-extern RunningTask* runningTask;
-extern SleepingTask* sleepingTask;
-extern ExecutingTask* executingTask;
-extern EndTask* endTask;
-extern ErrorTask* errorTask;
-extern BlinkTask* blinkTask;
+ReadyTask* readyTask;
+RunningTask* runningTask;
+SleepingTask* sleepingTask;
+ExecutingTask* executingTask;
+EndTask* endTask;
+ErrorTask* errorTask;
+BlinkTask* blinkTask;
 
 TemperatureDHT* temperatureDHT;
 Potentiometer* potentiometer;
@@ -33,17 +34,24 @@ void createSensors() {
     buttonStart = new Button(BUTTON_START_PIN);
     buttonStop = new Button(BUTTON_STOP_PIN);
     sonar = new Sonar(SONAR_TRIG_PIN, SONAR_ECHO_PIN, temperatureDHT->getValue());
+    pir = new Pir(PIR_PIN);
 }
 
 void createTasks() {
-    int MCD = 50; // TODO select right MCD
     readyTask = new ReadyTask(led1, led2, buttonStart, potentiometer, temperatureDHT, executingTask, runningTask, sleepingTask);
+    runningTask = new RunningTask(buttonStop, sonar, led2, errorTask, executingTask, endTask);
+    sleepingTask = new SleepingTask(pir, readyTask);
+    executingTask = new ExecutingTask(led2, servoMotor, sonar, endTask);
+    endTask = new EndTask(blinkTask, led2, readyTask);
+    errorTask = new ErrorTask(led2, blinkTask, endTask);
+    blinkTask = new BlinkTask();
 }
 
 void setup()
 {
     createSensors();
     createTasks();
+    
 }
 
 void loop()

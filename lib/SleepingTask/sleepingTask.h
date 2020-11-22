@@ -1,6 +1,8 @@
 #ifndef __SLEEPINGTASK__
 #define __SLEEPINGTASK__
 
+#define LIBCALL_ENABLEINTERRUPT
+
 #include <Arduino.h>
 #include <EnableInterrupt.h>
 #include <avr/sleep.h>
@@ -14,7 +16,6 @@
 class SleepingTask: public Task {
 private:
   Pir* pir;
-  void setupTask();
   static void wakeUp();
   ReadyTask* readyTask;
 public:

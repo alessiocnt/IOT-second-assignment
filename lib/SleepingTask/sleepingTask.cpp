@@ -1,5 +1,6 @@
 #include "SleepingTask.h"
 
+
 SleepingTask::SleepingTask(Pir* pir, ReadyTask* readyTask)
 {
     this->pir = pir;
@@ -9,7 +10,6 @@ SleepingTask::SleepingTask(Pir* pir, ReadyTask* readyTask)
 void SleepingTask::init(int period)
 {
     Task::init(period);
-    setupTask();
 }
 
 void SleepingTask::tick()
