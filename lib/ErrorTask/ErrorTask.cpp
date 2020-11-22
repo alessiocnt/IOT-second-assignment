@@ -11,13 +11,18 @@ void ErrorTask::init(int period){
 }
 
 void ErrorTask::tick(){
-    blinkTask->setActive(true);
-    blinkTask->init(this->myPeriod, led2, ERROR_TIME);
+
+    if(!blinked) {
+        blinked = true;
+        blinkTask->init(this->myPeriod, led2, ERROR_TIME);
+        blinkTask->setActive(true);
+    }
 
     if(!blinkTask->isActive()){
         this->setActive(false);
         led2->switchOff();
         endTask->setActive(true);
         MsgService.sendMsg("End");
+        blinked = false;
     }
 }

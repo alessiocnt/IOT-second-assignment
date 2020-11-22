@@ -15,7 +15,7 @@ private:
     EndTask* endTask;
 
 public:
-    EndExperimentTask(Button* button, ExecutingTask* executingTask, EndTask* endTask);
+    EndExperimentTask(Button* buttonStop, ExecutingTask* executingTask, EndTask* endTask);
     void init(int period);
     void tick();
 };

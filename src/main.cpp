@@ -12,6 +12,7 @@ ExecutingTask* executingTask;
 EndTask* endTask;
 ErrorTask* errorTask;
 BlinkTask* blinkTask;
+EndExperimentTask* endExperimentTask;
 
 TemperatureDHT* temperatureDHT;
 Potentiometer* potentiometer;
@@ -45,16 +46,43 @@ void createTasks() {
     endTask = new EndTask(blinkTask, led2, readyTask);
     errorTask = new ErrorTask(led2, blinkTask, endTask);
     blinkTask = new BlinkTask();
+    endExperimentTask = new EndExperimentTask(buttonStop, executingTask, endTask);
+}
+
+void setupTasks() {
+    int MCD = 50; // TODO 
+    readyTask->init(MCD);
+    scheduler.addTask(readyTask);
+
+    runningTask->init(MCD);
+    scheduler.addTask(runningTask);
+
+    sleepingTask->init(MCD);
+    scheduler.addTask(sleepingTask);
+
+    errorTask->init(MCD);
+    scheduler.addTask(errorTask);
+    
+    scheduler.addTask(executingTask);
+
+    endExperimentTask->init(MCD);
+    scheduler.addTask(endExperimentTask);
+
+    endTask->init(MCD);
+    scheduler.addTask(endTask);
+
+    scheduler.addTask(blinkTask);
 }
 
 void setup()
 {
     createSensors();
     createTasks();
-    
+    setupTasks();
+    readyTask->setActive(true);
 }
 
 void loop()
 {
-    // put your main code here, to run repeatedly:
+    scheduler.schedule();
 }

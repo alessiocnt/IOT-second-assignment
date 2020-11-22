@@ -7,6 +7,7 @@
 #include "ExecutingTask.h"
 #include "EndTask.h"
 #include "ErrorTask.h"
+#include "EndExperimentTask.h"
 
 
 #endif

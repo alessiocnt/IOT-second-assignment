@@ -1,6 +1,6 @@
 #include "EndExperimentTask.h"
 
-EndExperimentTask::EndExperimentTask(Button* button, ExecutingTask* executingTask, EndTask* endTask) {
+EndExperimentTask::EndExperimentTask(Button* buttonStop, ExecutingTask* executingTask, EndTask* endTask) {
     this->button = button;
     this->executingTask = executingTask;
     this->endTask= endTask;

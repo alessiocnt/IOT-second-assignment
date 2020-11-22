@@ -16,6 +16,7 @@ private:
     Led* led2;
     BlinkTask* blinkTask;
     EndTask* endTask;
+    bool blinked = false;
 public:
     ErrorTask(Led* led2, BlinkTask* blinkTask, EndTask* endTask);  
     void init(int period);  
