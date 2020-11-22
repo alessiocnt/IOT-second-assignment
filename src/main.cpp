@@ -83,6 +83,9 @@ void setup()
     MsgService.init();
     scheduler.init(25);
     readyTask->setActive(true);
+    MsgService.sendMsg("Setting up sensors...");
+    delay(5000);
+    MsgService.sendMsg("ON");
 }
 
 void loop()

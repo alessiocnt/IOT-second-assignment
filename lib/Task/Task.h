@@ -10,6 +10,7 @@ public:
     {
         myPeriod = period;
         timeElapsed = 0;
+        this->active = false;
     }
 
     virtual void tick() = 0;
