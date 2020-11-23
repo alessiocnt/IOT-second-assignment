@@ -51,7 +51,7 @@ void createTasks() {
 }
 
 void setupTasks() {
-    int MCD = 50; // TODO 
+    int MCD = 50;
     readyTask->init(MCD);
     scheduler.addTask(readyTask);
 

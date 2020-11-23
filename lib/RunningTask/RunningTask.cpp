@@ -15,7 +15,8 @@ void RunningTask::init(int period){
 void RunningTask::tick(){
   currentTime += this->myPeriod;
   if(currentTime < MAX_TIME){
-    if(sonar->getDistance() > 1){
+    float objectDistance = sonar->getDistance();
+    if(objectDistance > 1){
       this->setActive(false);
       setupTask();
       errorTask->setActive(true);
@@ -25,6 +26,7 @@ void RunningTask::tick(){
       setupTask();
       executingTask->setActive(true);
       executingTask->setCurrentTime(currentTime);
+      executingTask->setFirstDistance(objectDistance);
       endExperimentTask->setActive(true);
       led2->switchOn();
       MsgService.sendMsg("Executing");

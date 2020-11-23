@@ -137,10 +137,10 @@ void loop()
     // testLed(3);
     // testButton(4);
     // testButton(5);
-    testPot(A0);
+    //testPot(A0);
     // testPir(8);
-    // testSonar(13, 12, 20);
-    // testServoMotor(6);
+     // testSonar(13, 12, 20);
+     testServoMotor(6);
     UNITY_END();
     return;
 }

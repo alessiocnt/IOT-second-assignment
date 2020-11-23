@@ -4,7 +4,7 @@
 #define SLEEP_TIME 5000
 #define MAX_TIME 20000
 #define ERROR_TIME 2000
-#define MAX_SPEED 10
+#define MAX_SPEED 0.15
 #define SCHEDULER_FREQ 5
 // MAXVEL TBD
 

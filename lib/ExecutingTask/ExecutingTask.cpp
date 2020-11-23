@@ -4,9 +4,15 @@ ExecutingTask::ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar) {
     this->id = "ExecT"; //togli
     this->led2 = led2;
     this->servoMotor = servoMotor;
+    this->servoMotor->on();
+    delay(2000);
+    this->servoMotor->setPosition(0);
+    delay(20);
+    this->servoMotor->setPosition(90);
     this->sonar = sonar;
     this->lastSpeed = 0;
     this->lastDistance = 0;
+    this->tLastPrint = 0;
 }
 
 void ExecutingTask::init(int period) {
@@ -14,7 +20,8 @@ void ExecutingTask::init(int period) {
 }
 
 void ExecutingTask::setSamplingFrequency(int frequency) {
-    this->init(1000 / frequency);
+    //this->init(1000 / frequency);
+    this->init(1000);
 }
 
 void ExecutingTask::setCurrentTime(int time) {
@@ -25,14 +32,18 @@ void ExecutingTask::setTemperature(int temperature) {
     sonar->setTemperature(temperature);
 }
 
+void ExecutingTask::setFirstDistance(float distance) {
+    lastDistance = (double)distance;
+}
+
 void ExecutingTask::tick() {
     currentTime += myPeriod;
     if(currentTime < MAX_TIME) {
-        float distance = sonar->getDistance();
+        double distance = (double)sonar->getDistance();
         MsgService.sendMsg(String(distance));
         if (distance != -1 && distance < 2) {
-            float speed = (abs(distance - lastDistance) / (myPeriod * 1000)) * 1000000;
-            float acceleration = (abs(speed - lastSpeed) / (myPeriod * 1000)) * 1000000;
+            double speed = ((distance - lastDistance) / myPeriod) * (double)1000;
+            double acceleration = ((speed - lastSpeed) / myPeriod) * (double)1000;
             MsgService.sendMsg("{\"speed\":" + String(speed) + ",\"acceleration\":" + String(acceleration) + "}");
             setServoMotorSpeed(speed);
             lastSpeed = speed;
@@ -46,6 +57,12 @@ void ExecutingTask::tick() {
     }
 }
 
-void ExecutingTask::setServoMotorSpeed(float speed){
-    servoMotor->setPosition((speed / MAX_SPEED) * 180);
+void ExecutingTask::setServoMotorSpeed(double speed){
+    int pos = map(speed * 100, 0, 200, 180, 0);
+    //int pos = abs(speed/MAX_SPEED)*180;
+    if(currentTime - tLastPrint >= 500){
+        tLastPrint = currentTime;
+        servoMotor->setPosition(pos);
+        Serial.println(pos);
+    }
 }

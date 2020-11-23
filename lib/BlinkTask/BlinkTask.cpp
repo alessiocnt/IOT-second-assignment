@@ -13,7 +13,6 @@ void BlinkTask::init(int period, Led* led, int timeToBlink){
 void BlinkTask::tick(){
     currentTime += this->myPeriod;
     if(timeToBlink == BLINK_FOREVER || currentTime < timeToBlink){ 
-        Serial.println(timeToBlink); //togli
         switch (lightState){
             case OFF:
             led->switchOn();

@@ -15,11 +15,12 @@ private:
     Led* led2;
     ServoMotor* servoMotor;
     Sonar* sonar;
-    float lastDistance;
-    float lastSpeed;
+    double lastDistance;
+    double lastSpeed;
     int currentTime;
     int temperature;
-    void setServoMotorSpeed(float speed);
+    long tLastPrint;
+    void setServoMotorSpeed(double speed);
 
 public:
     ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar);
@@ -27,6 +28,7 @@ public:
     void setSamplingFrequency(int frequency);
     void setCurrentTime(int time);
     void setTemperature(int temperature);
+    void setFirstDistance(float distance);
     void tick();
 };
 
