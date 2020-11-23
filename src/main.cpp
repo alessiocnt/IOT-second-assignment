@@ -43,7 +43,7 @@ void createTasks() {
     readyTask = new ReadyTask(led1, led2, buttonStart, potentiometer, temperatureDHT);
     runningTask = new RunningTask(buttonStop, sonar, led2);
     sleepingTask = new SleepingTask(pir);
-    executingTask = new ExecutingTask(led2, servoMotor, sonar);
+    executingTask = new ExecutingTask(led2, sonar);
     endTask = new EndTask(led2);
     errorTask = new ErrorTask(led2);
     blinkTask = new BlinkTask();

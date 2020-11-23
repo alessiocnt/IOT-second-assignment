@@ -13,7 +13,6 @@
 class ExecutingTask : public Task {
 private:
     Led* led2;
-    ServoMotor* servoMotor;
     Sonar* sonar;
     double lastDistance;
     double lastSpeed;
@@ -23,7 +22,7 @@ private:
     void setServoMotorSpeed(double speed);
 
 public:
-    ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar);
+    ExecutingTask(Led* led2, Sonar* sonar);
     void init(int period);
     void setSamplingFrequency(int frequency);
     void setCurrentTime(int time);

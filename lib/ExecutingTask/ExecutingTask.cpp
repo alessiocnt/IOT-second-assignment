@@ -1,14 +1,13 @@
 #include "ExecutingTask.h"
 
-ExecutingTask::ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar) {
+ExecutingTask::ExecutingTask(Led* led2, Sonar* sonar) {
     this->id = "ExecT"; //togli
     this->led2 = led2;
-    this->servoMotor = servoMotor;
-    this->servoMotor->on();
+    servoMotor->on();
     delay(2000);
-    this->servoMotor->setPosition(0);
+    servoMotor->setPosition(0);
     delay(20);
-    this->servoMotor->setPosition(90);
+    servoMotor->setPosition(90);
     this->sonar = sonar;
     this->lastSpeed = 0;
     this->lastDistance = 0;
@@ -20,8 +19,8 @@ void ExecutingTask::init(int period) {
 }
 
 void ExecutingTask::setSamplingFrequency(int frequency) {
-    //this->init(1000 / frequency);
-    this->init(1000);
+    this->init(1000 / frequency);
+    //this->init(1000);
 }
 
 void ExecutingTask::setCurrentTime(int time) {
@@ -58,11 +57,14 @@ void ExecutingTask::tick() {
 }
 
 void ExecutingTask::setServoMotorSpeed(double speed){
-    int pos = map(speed * 100, 0, 200, 180, 0);
+    int pos = map(abs(speed) * 100, 0, 200, 0, 18);
+    //servoMotorTask->setPositon(pos * 10);
+    //servoMotor->setPosition(pos);
+    //Serial.println(pos);
     //int pos = abs(speed/MAX_SPEED)*180;
-    if(currentTime - tLastPrint >= 500){
-        tLastPrint = currentTime;
-        servoMotor->setPosition(pos);
-        Serial.println(pos);
-    }
+    // if(currentTime - tLastPrint >= 500){
+    //     tLastPrint = currentTime;
+    //     servoMotor->setPosition(pos);
+        
+    // }
 }
