@@ -51,26 +51,26 @@ void createTasks() {
 }
 
 void setupTasks() {
-    int MCD = 500; // TODO 
-    readyTask->init(50);
+    int MCD = 50; // TODO 
+    readyTask->init(MCD);
     scheduler.addTask(readyTask);
 
-    runningTask->init(75);
+    runningTask->init(MCD);
     scheduler.addTask(runningTask);
 
-    sleepingTask->init(25);
+    sleepingTask->init(MCD);
     scheduler.addTask(sleepingTask);
 
-    errorTask->init(100);
+    errorTask->init(2*MCD);
     scheduler.addTask(errorTask);
     
-    executingTask->init(50);
+    executingTask->init(MCD);
     scheduler.addTask(executingTask);
 
-    endExperimentTask->init(50);
+    endExperimentTask->init(MCD);
     scheduler.addTask(endExperimentTask);
 
-    endTask->init(100);
+    endTask->init(2*MCD);
     scheduler.addTask(endTask);
 
     scheduler.addTask(blinkTask);
@@ -83,7 +83,7 @@ void setup()
     createTasks();
     setupTasks();
     MsgService.init();
-    scheduler.init(25);
+    scheduler.init(SCHEDULER_FREQ);
     readyTask->setActive(true);
     MsgService.sendMsg("Setting up sensors...");
     delay(5000);

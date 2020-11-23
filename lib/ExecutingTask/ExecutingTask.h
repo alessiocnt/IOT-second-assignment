@@ -19,7 +19,7 @@ private:
     float lastSpeed;
     int currentTime;
     int temperature;
-    void setServoMotorSpeed(int speed);
+    void setServoMotorSpeed(float speed);
 
 public:
     ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar);

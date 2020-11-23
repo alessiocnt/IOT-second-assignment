@@ -9,5 +9,5 @@ Potentiometer::Potentiometer(int pin){
 // Maps the read value in a range between MIN_FREQUENCY and MAX_FREQUENCY
 int Potentiometer::getValue(){
     int value = analogRead(pin);
-    return map(value, 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
+    return 5 * map(value, 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
 }

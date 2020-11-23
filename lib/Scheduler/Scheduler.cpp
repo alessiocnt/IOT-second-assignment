@@ -16,6 +16,7 @@ void Scheduler::init(int basePeriod){
   //long period = 1000l*basePeriod;
   //Timer1.initialize(period);
   //Timer1.attachInterrupt(timerHandler);
+  MsTimer2::stop();
   MsTimer2::set(basePeriod, timerHandler); // è già in ms
   MsTimer2::start();
 }
@@ -32,10 +33,10 @@ void Scheduler::schedule(){
   for (int i = 0; i < taskList.size(); i++){
     Task* it = taskList.get(i);
     if (it->isActive() && it->updateAndCheckTime(basePeriod)){
-      MsgService.sendMsg("SCHEDULOO!");
+      //MsgService.sendMsg("SCHEDULOO!");
       it->tick();
-      Serial.print(it->id);
-      MsgService.sendMsg("SCHEDULATO!");
+      //Serial.print(it->id);
+      //MsgService.sendMsg("SCHEDULATO!");
     }
   }
 }

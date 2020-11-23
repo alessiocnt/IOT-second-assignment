@@ -1,7 +1,7 @@
 #ifndef __POTENTIOMETER__
 #define __POTENTIOMETER__
-#define MIN_FREQUENCY 0
-#define MAX_FREQUENCY 50
+#define MIN_FREQUENCY 1
+#define MAX_FREQUENCY 10
 
 // Class that models a Potentiometer
 class Potentiometer {
