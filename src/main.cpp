@@ -44,8 +44,8 @@ void createTasks() {
     runningTask = new RunningTask(buttonStop, sonar, led2);
     sleepingTask = new SleepingTask(pir);
     executingTask = new ExecutingTask(led2, servoMotor, sonar);
-    endTask = new EndTask(blinkTask, led2);
-    errorTask = new ErrorTask(led2, blinkTask);
+    endTask = new EndTask(led2);
+    errorTask = new ErrorTask(led2);
     blinkTask = new BlinkTask();
     endExperimentTask = new EndExperimentTask(buttonStop);
 }
@@ -61,19 +61,20 @@ void setupTasks() {
     sleepingTask->init(25);
     scheduler.addTask(sleepingTask);
 
-    errorTask->init(MCD);
+    errorTask->init(100);
     scheduler.addTask(errorTask);
     
-    executingTask->init(MCD);
+    executingTask->init(50);
     scheduler.addTask(executingTask);
 
-    endExperimentTask->init(MCD);
+    endExperimentTask->init(50);
     scheduler.addTask(endExperimentTask);
 
-    endTask->init(MCD);
+    endTask->init(100);
     scheduler.addTask(endTask);
 
     scheduler.addTask(blinkTask);
+    blinkTask->setActive(false);
 }
 
 void setup()
@@ -93,4 +94,7 @@ void loop()
 {
     scheduler.schedule();
     //sleepingTask->tick();
+    /*endTask->tick();
+    if(blinkTask->isActive()){blinkTask->tick();}
+    delay(500);*/
 }

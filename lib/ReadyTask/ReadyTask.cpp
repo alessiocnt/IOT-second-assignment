@@ -35,13 +35,9 @@ void ReadyTask::tick(){
   }else{
     this->setActive(false);
     sleepingTask->setActive(true);
-    Serial.print("AAAAAAAAA");
-    Serial.println(sleepingTask->isActive());
     led1->switchOff();
-    MsgService.sendMsg("Sleep");
+    //MsgService.sendMsg("Sleep");
     setupTask();
-    Serial.print("BBBBB");
-    Serial.println(sleepingTask->isActive());
   }
 }
 

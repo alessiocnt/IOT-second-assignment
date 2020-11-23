@@ -1,22 +1,30 @@
 #include "EndTask.h"
 
-EndTask::EndTask(BlinkTask* blinkTask, Led* led2) {
-    this->blinkTask = blinkTask;
-    this->led = led;
+EndTask::EndTask(Led* led2) {
+    this->id = "EndT"; //togli
+    this->led = led2;
 }
 
 void EndTask::init(int period) {
     Task::init(period);
-    blinkTask->init(period, led, BLINK_FOREVER);
 }
 
 void EndTask::tick() {
+    if(!blinked) {
+        Serial.println("A");
+        blinked = true;
+        blinkTask->init(this->myPeriod, led, BLINK_FOREVER);
+        blinkTask->setActive(true);
+    }
     if(MsgService.isMsgAvailable()) {
         Msg* msg = MsgService.receiveMsg();
         if (msg->getContent() == "end") {
+            Serial.println("B");
             blinkTask->setActive(false);
             this->setActive(false);
             readyTask->setActive(true);
+            led->switchOff();
+            blinked = false;
         }
     }
 }

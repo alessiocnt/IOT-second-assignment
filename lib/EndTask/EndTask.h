@@ -3,16 +3,15 @@
 
 #include <Arduino.h>
 #include "main.h"
-#include "BlinkTask.h"
 #include "MsgService.h"
 #include "Led.h"
 
 class EndTask : public Task {
 private:
-    BlinkTask* blinkTask;
     Led* led;
+    bool blinked = false;
 public:
-    EndTask(BlinkTask* blinkTask, Led* led2);
+    EndTask(Led* led2);
     void init(int period);
     void tick();
     

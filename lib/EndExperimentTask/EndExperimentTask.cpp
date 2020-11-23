@@ -1,7 +1,8 @@
 #include "EndExperimentTask.h"
 
 EndExperimentTask::EndExperimentTask(Button* buttonStop) {
-    this->button = button;
+    this->id = "EndExperimentT"; //togli
+    this->button = buttonStop;
 }
 
 void EndExperimentTask::init(int period) {

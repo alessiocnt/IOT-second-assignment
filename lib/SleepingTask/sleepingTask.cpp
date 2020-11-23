@@ -16,7 +16,7 @@ void SleepingTask::tick()
 {
     //Interrupt abilitati
     enableInterrupt(pir->getPin(), wakeUp, RISING);
-    Serial.println("SleepInsideSleeping");// togli
+    Serial.println("Sleep");
     delay(1000);
     //Sleep mode ON 
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);  

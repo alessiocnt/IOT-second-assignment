@@ -1,6 +1,6 @@
 #include "BlinkTask.h"
 
-BlinkTask::BlinkTask(){}
+BlinkTask::BlinkTask(){this->id = "BlinkT";}
 
 // Il period si traduce in tempo di blink
 void BlinkTask::init(int period, Led* led, int timeToBlink){
@@ -12,7 +12,8 @@ void BlinkTask::init(int period, Led* led, int timeToBlink){
   
 void BlinkTask::tick(){
     currentTime += this->myPeriod;
-    if(currentTime < timeToBlink || timeToBlink == BLINK_FOREVER){ 
+    if(timeToBlink == BLINK_FOREVER || currentTime < timeToBlink){ 
+        Serial.println(timeToBlink); //togli
         switch (lightState){
             case OFF:
             led->switchOn();

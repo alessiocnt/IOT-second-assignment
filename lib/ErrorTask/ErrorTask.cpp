@@ -1,8 +1,8 @@
 #include "ErrorTask.h"
 
-ErrorTask::ErrorTask(Led* led2, BlinkTask* blinkTask){
+ErrorTask::ErrorTask(Led* led2){
+    this->id = "ErrorT"; //togli
     this->led2 = led2;
-    this->blinkTask = blinkTask;
 }
 //Perchè non dia interferenza al blinking è necessario scegliere un periodo > ERROR_TIME (tempo di blinking)
 void ErrorTask::init(int period){
@@ -10,7 +10,6 @@ void ErrorTask::init(int period){
 }
 
 void ErrorTask::tick(){
-
     if(!blinked) {
         blinked = true;
         blinkTask->init(this->myPeriod, led2, ERROR_TIME);
@@ -21,7 +20,6 @@ void ErrorTask::tick(){
         this->setActive(false);
         led2->switchOff();
         endTask->setActive(true);
-        MsgService.sendMsg("End");
         blinked = false;
     }
 }
