@@ -1,11 +1,14 @@
 #ifndef __TASK__
 #define __TASK__
 
+#include <Arduino.h>
 // Class that models a Task
 class Task
 {
 public:
+    String id; //togli
     int myPeriod;
+    volatile bool active;
     virtual void init(int period)
     {
         myPeriod = period;
@@ -41,7 +44,7 @@ public:
 
 private:
     int timeElapsed;
-    volatile bool active;
+    
 };
 
 #endif

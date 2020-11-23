@@ -1,9 +1,8 @@
 #include "EndTask.h"
 
-EndTask::EndTask(BlinkTask* blinkTask, Led* led2, ReadyTask* readyTask) {
+EndTask::EndTask(BlinkTask* blinkTask, Led* led2) {
     this->blinkTask = blinkTask;
     this->led = led;
-    this->readyTask = readyTask;
 }
 
 void EndTask::init(int period) {

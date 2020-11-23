@@ -3,19 +3,16 @@
 
 #include <Arduino.h>
 #include "header.h"
+#include "main.h"
 #include "Task.h"
 #include "Button.h"
-#include "ExecutingTask.h"
-#include "EndTask.h"
 
 class EndExperimentTask : public Task {
 private:
     Button* button;
-    ExecutingTask* executingTask;
-    EndTask* endTask;
 
 public:
-    EndExperimentTask(Button* buttonStop, ExecutingTask* executingTask, EndTask* endTask);
+    EndExperimentTask(Button* buttonStop);
     void init(int period);
     void tick();
 };

@@ -3,17 +3,15 @@
 
 #include <Arduino.h>
 #include "header.h"
+#include "main.h"
 #include "Task.h"
 #include "Sonar.h"
 #include "ServoMotor.h"
 #include "Led.h"
 #include "MsgService.h"
-#include "EndTask.h"
-
 
 class ExecutingTask : public Task {
 private:
-    EndTask* endTask;
     Led* led2;
     ServoMotor* servoMotor;
     Sonar* sonar;
@@ -24,13 +22,12 @@ private:
     void setServoMotorSpeed(int speed);
 
 public:
-    ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar, EndTask* endTask);
+    ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar);
     void init(int period);
     void setSamplingFrequency(int frequency);
     void setCurrentTime(int time);
     void setTemperature(int temperature);
     void tick();
 };
-
 
 #endif

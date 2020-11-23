@@ -1,12 +1,10 @@
 #include "RunningTask.h"
 
-RunningTask::RunningTask(Button* stopBtt, Sonar* sonar, Led* led2, ErrorTask* errorTask, ExecutingTask* executingTask, EndTask* endTask){
+RunningTask::RunningTask(Button* stopBtt, Sonar* sonar, Led* led2){
+  this->id = "RunningT";
   this->stopBtt = stopBtt;
   this->sonar = sonar;
   this->led2 = led2;
-  this->errorTask = errorTask;
-  this->executingTask = executingTask;
-  this->endTask = endTask;
 }
   
 void RunningTask::init(int period){

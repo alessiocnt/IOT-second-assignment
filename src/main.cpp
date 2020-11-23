@@ -40,14 +40,14 @@ void createSensors() {
 }
 
 void createTasks() {
-    readyTask = new ReadyTask(led1, led2, buttonStart, potentiometer, temperatureDHT, executingTask, runningTask, sleepingTask);
-    runningTask = new RunningTask(buttonStop, sonar, led2, errorTask, executingTask, endTask);
-    sleepingTask = new SleepingTask(pir, readyTask);
-    executingTask = new ExecutingTask(led2, servoMotor, sonar, endTask);
-    endTask = new EndTask(blinkTask, led2, readyTask);
-    errorTask = new ErrorTask(led2, blinkTask, endTask);
+    readyTask = new ReadyTask(led1, led2, buttonStart, potentiometer, temperatureDHT);
+    runningTask = new RunningTask(buttonStop, sonar, led2);
+    sleepingTask = new SleepingTask(pir);
+    executingTask = new ExecutingTask(led2, servoMotor, sonar);
+    endTask = new EndTask(blinkTask, led2);
+    errorTask = new ErrorTask(led2, blinkTask);
     blinkTask = new BlinkTask();
-    endExperimentTask = new EndExperimentTask(buttonStop, executingTask, endTask);
+    endExperimentTask = new EndExperimentTask(buttonStop);
 }
 
 void setupTasks() {
@@ -55,7 +55,7 @@ void setupTasks() {
     readyTask->init(50);
     scheduler.addTask(readyTask);
 
-    runningTask->init(50);
+    runningTask->init(75);
     scheduler.addTask(runningTask);
 
     sleepingTask->init(25);

@@ -1,10 +1,10 @@
 #include "SleepingTask.h"
 
 
-SleepingTask::SleepingTask(Pir* pir, ReadyTask* readyTask)
+SleepingTask::SleepingTask(Pir* pir)
 {
+    this->id = "SleepingT";
     this->pir = pir;
-    this->readyTask = readyTask;
 }
 
 void SleepingTask::init(int period)
@@ -16,7 +16,7 @@ void SleepingTask::tick()
 {
     //Interrupt abilitati
     enableInterrupt(pir->getPin(), wakeUp, RISING);
-    Serial.println("Sleep");
+    Serial.println("SleepInsideSleeping");// togli
     delay(1000);
     //Sleep mode ON 
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);  

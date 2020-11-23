@@ -1,6 +1,6 @@
 #include "ExecutingTask.h"
 
-ExecutingTask::ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar, EndTask* endTask) {
+ExecutingTask::ExecutingTask(Led* led2, ServoMotor* servoMotor, Sonar* sonar) {
     this->led2 = led2;
     this->servoMotor = servoMotor;
     this->sonar = sonar;

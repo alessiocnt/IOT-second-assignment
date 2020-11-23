@@ -1,9 +1,8 @@
 #include "ErrorTask.h"
 
-ErrorTask::ErrorTask(Led* led2, BlinkTask* blinkTask, EndTask* endTask){
+ErrorTask::ErrorTask(Led* led2, BlinkTask* blinkTask){
     this->led2 = led2;
     this->blinkTask = blinkTask;
-    this->endTask = endTask;
 }
 //Perchè non dia interferenza al blinking è necessario scegliere un periodo > ERROR_TIME (tempo di blinking)
 void ErrorTask::init(int period){
