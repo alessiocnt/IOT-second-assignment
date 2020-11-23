@@ -41,7 +41,7 @@ public:
 
 private:
     int timeElapsed;
-    bool active;
+    volatile bool active;
 };
 
 #endif
