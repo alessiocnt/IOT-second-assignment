@@ -28,6 +28,7 @@ void RunningTask::tick(){
       executingTask->setCurrentTime(currentTime);
       executingTask->setFirstDistance(objectDistance);
       endExperimentTask->setActive(true);
+      servoMovementTask->setActive(true);
       led2->switchOn();
       MsgService.sendMsg("Executing");
     }

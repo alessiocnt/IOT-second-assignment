@@ -3,11 +3,6 @@
 ExecutingTask::ExecutingTask(Led* led2, Sonar* sonar) {
     this->id = "ExecT"; //togli
     this->led2 = led2;
-    servoMotor->on();
-    delay(2000);
-    servoMotor->setPosition(0);
-    delay(20);
-    servoMotor->setPosition(90);
     this->sonar = sonar;
     this->lastSpeed = 0;
     this->lastDistance = 0;
@@ -58,13 +53,5 @@ void ExecutingTask::tick() {
 
 void ExecutingTask::setServoMotorSpeed(double speed){
     int pos = map(abs(speed) * 100, 0, 200, 0, 18);
-    //servoMotorTask->setPositon(pos * 10);
-    //servoMotor->setPosition(pos);
-    //Serial.println(pos);
-    //int pos = abs(speed/MAX_SPEED)*180;
-    // if(currentTime - tLastPrint >= 500){
-    //     tLastPrint = currentTime;
-    //     servoMotor->setPosition(pos);
-        
-    // }
+    servoMovementTask->setPosition(pos * 10);
 }

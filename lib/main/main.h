@@ -10,6 +10,7 @@
 #include "EndExperimentTask.h"
 #include "BlinkTask.h"
 #include "ServoMotor.h"
+#include "ServoMovementTask.h"
 
 extern ReadyTask* readyTask;
 extern RunningTask* runningTask;
@@ -20,6 +21,6 @@ extern ErrorTask* errorTask;
 extern BlinkTask* blinkTask;
 extern EndExperimentTask* endExperimentTask;
 extern BlinkTask* blinkTask;
-extern ServoMotor* servoMotor;
+extern ServoMovementTask* servoMovementTask;
 
 #endif

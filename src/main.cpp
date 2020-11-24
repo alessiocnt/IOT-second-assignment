@@ -14,6 +14,7 @@ EndTask* endTask;
 ErrorTask* errorTask;
 BlinkTask* blinkTask;
 EndExperimentTask* endExperimentTask;
+ServoMovementTask* servoMovementTask;
 
 TemperatureDHT* temperatureDHT;
 Potentiometer* potentiometer;
@@ -48,6 +49,7 @@ void createTasks() {
     errorTask = new ErrorTask(led2);
     blinkTask = new BlinkTask();
     endExperimentTask = new EndExperimentTask(buttonStop);
+    servoMovementTask = new ServoMovementTask(servoMotor);
 }
 
 void setupTasks() {
@@ -75,14 +77,17 @@ void setupTasks() {
 
     scheduler.addTask(blinkTask);
     blinkTask->setActive(false);
+
+    servoMovementTask->init(MCD);
+    scheduler.addTask(servoMovementTask);
 }
 
 void setup()
 {
+    MsgService.init();
     createSensors();
     createTasks();
     setupTasks();
-    MsgService.init();
     scheduler.init(SCHEDULER_FREQ);
     readyTask->setActive(true);
     MsgService.sendMsg("Setting up sensors...");
