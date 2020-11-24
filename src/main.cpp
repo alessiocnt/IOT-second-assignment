@@ -90,16 +90,9 @@ void setup()
     setupTasks();
     scheduler.init(SCHEDULER_FREQ);
     readyTask->setActive(true);
-    MsgService.sendMsg("Setting up sensors...");
-    delay(5000);
-    MsgService.sendMsg("ON");
 }
 
 void loop()
 {
     scheduler.schedule();
-    //sleepingTask->tick();
-    /*endTask->tick();
-    if(blinkTask->isActive()){blinkTask->tick();}
-    delay(500);*/
 }

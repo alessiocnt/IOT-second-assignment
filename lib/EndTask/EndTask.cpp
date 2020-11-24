@@ -11,7 +11,6 @@ void EndTask::init(int period) {
 
 void EndTask::tick() {
     if(!blinked) {
-        Serial.println("A");
         blinked = true;
         blinkTask->init(this->myPeriod, led, BLINK_FOREVER);
         blinkTask->setActive(true);
@@ -19,7 +18,6 @@ void EndTask::tick() {
     if(MsgService.isMsgAvailable()) {
         Msg* msg = MsgService.receiveMsg();
         if (msg->getContent() == "end") {
-            Serial.println("B");
             blinkTask->setActive(false);
             this->setActive(false);
             readyTask->setActive(true);
