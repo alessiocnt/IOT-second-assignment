@@ -33,10 +33,7 @@ void Scheduler::schedule(){
   for (int i = 0; i < taskList.size(); i++){
     Task* it = taskList.get(i);
     if (it->isActive() && it->updateAndCheckTime(basePeriod)){
-      //MsgService.sendMsg("SCHEDULOO!");
       it->tick();
-      //Serial.print(it->id);
-      //MsgService.sendMsg("SCHEDULATO!");
     }
   }
 }

@@ -11,6 +11,7 @@ void EndTask::init(int period) {
 
 void EndTask::tick() {
     if(!blinked) {
+        MsgService.sendMsg("State:End");
         blinked = true;
         blinkTask->init(this->myPeriod, led, BLINK_FOREVER);
         blinkTask->setActive(true);
@@ -23,6 +24,7 @@ void EndTask::tick() {
             readyTask->setActive(true);
             led->switchOff();
             blinked = false;
+            servoMovementTask->init(this->myPeriod);
         }
     }
 }

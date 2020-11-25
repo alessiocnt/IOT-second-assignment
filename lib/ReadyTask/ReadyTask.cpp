@@ -26,7 +26,7 @@ void ReadyTask::tick()
         {
             led1->switchOn();
             led2->switchOff();
-            MsgService.sendMsg("Ready");
+            MsgService.sendMsg("State:Ready");
         }
         // Controllo la pressione del pulsante start, se premuto cambio task
         if (startBtt->isPressed())
@@ -43,7 +43,7 @@ void ReadyTask::tick()
         this->setActive(false);
         sleepingTask->setActive(true);
         led1->switchOff();
-        MsgService.sendMsg("Sleep");
+        MsgService.sendMsg("State:Sleep");
         setupTask();
     }
 }

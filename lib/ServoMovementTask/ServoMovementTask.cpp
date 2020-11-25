@@ -10,7 +10,7 @@ void ServoMovementTask::init(int period) {
     MsgService.sendMsg("Initializing servo");
     servoMotor->on();
     while(position > 0) {
-        position -= DELTA;
+        position -= 1;
         setServoPosition(position);
         delay(INIT_DELAY);
     }

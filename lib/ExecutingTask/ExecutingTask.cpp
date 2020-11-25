@@ -34,11 +34,10 @@ void ExecutingTask::tick() {
     currentTime += myPeriod;
     if(currentTime < MAX_TIME) {
         double distance = (double)sonar->getDistance();
-        MsgService.sendMsg(String(distance));
         if (distance != -1 && distance < 2) {
             double speed = ((distance - lastDistance) / myPeriod) * (double)1000;
             double acceleration = ((speed - lastSpeed) / myPeriod) * (double)1000;
-            MsgService.sendMsg("{\"speed\":" + String(speed) + ",\"acceleration\":" + String(acceleration) + "}");
+            MsgService.sendMsg("Data:" + String(currentTime) + "," + String(distance) + "," + String(speed) + "," + String(acceleration));
             setServoMotorSpeed(speed);
             lastSpeed = speed;
             lastDistance = distance;
@@ -47,7 +46,6 @@ void ExecutingTask::tick() {
         this->setActive(false);
         led2->switchOff();
         endTask->setActive(true);
-        MsgService.sendMsg("End");
     }
 }
 

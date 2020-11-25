@@ -20,7 +20,7 @@ void RunningTask::tick(){
       this->setActive(false);
       setupTask();
       errorTask->setActive(true);
-      MsgService.sendMsg("Error");
+      MsgService.sendMsg("State:Error");
     }else{
       this->setActive(false);
       setupTask();
@@ -30,13 +30,12 @@ void RunningTask::tick(){
       endExperimentTask->setActive(true);
       servoMovementTask->setActive(true);
       led2->switchOn();
-      MsgService.sendMsg("Executing");
+      MsgService.sendMsg("State:Executing");
     }
   }else{
     this->setActive(false);
     setupTask();
     endTask->setActive(true);
-    MsgService.sendMsg("End");
   }
 }
 

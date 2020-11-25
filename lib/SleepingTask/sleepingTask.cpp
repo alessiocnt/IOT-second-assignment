@@ -28,7 +28,4 @@ void SleepingTask::tick()
     readyTask->setActive(true);
 }
 
-void SleepingTask::wakeUp()
-{
-    //MsgService.sendMsg("Awake");
-}
+void SleepingTask::wakeUp() {}
