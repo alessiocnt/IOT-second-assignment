@@ -25,12 +25,13 @@ public class DataCollectorImpl implements DataCollector {
 	@Override
 	public final void collectData(String data) {
 		String values[] = data.split(":");
-	    
 	    if (values[0].equals("State")) {
     		view.setState(values[1]);
     	} else if (values[0].equals("Data")) {
     		String results[] = values[1].split(",");
     		this.setData(results);
+    	} else if (values[0].equals("Freq")) {
+    		this.view.setFreq(values[1]);
     	}
 		
 	}

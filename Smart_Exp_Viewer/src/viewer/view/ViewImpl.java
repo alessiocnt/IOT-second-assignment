@@ -22,6 +22,7 @@ public class ViewImpl implements View {
 	private Frame f;
 	private JPanel p;
 	private JLabel lblState;
+	private JLabel lblFreq;
 	private JButton btnReset;
 	
 	private DataCollector dataCollector;
@@ -61,19 +62,25 @@ public class ViewImpl implements View {
 		this.f = new SwingWrapper<XYChart>(this.charts).displayChartMatrix();
 		this.p = new JPanel();
 		this.p.setLayout(new GridLayout(2, 1));
-	    
+	    JPanel p1 = new JPanel();
+	    p1.setLayout(new GridLayout(1, 2));
 		this.lblState = new JLabel("State");
 		this.lblState.setFont(new Font(this.lblState.getFont().getFontName(), Font.PLAIN, 20));
+		this.lblFreq = new JLabel("");
+		this.lblFreq.setFont(new Font(this.lblFreq.getFont().getFontName(), Font.PLAIN, 20));
 		this.btnReset = new JButton("Reset");
 		this.btnReset.setFont(new Font(this.btnReset.getFont().getFontName(), Font.PLAIN, 20));
 		this.btnReset.setEnabled(false);
 		this.btnReset.addActionListener((e) -> {
 	    	this.channel.sendMsg("end");
+	    	this.lblFreq.setText("");
 	    	this.dataCollector.reset();
 	    });
 	
 	    // add panel to frame 
-	    this.p.add(this.lblState); 
+		p1.add(lblState);
+		p1.add(lblFreq);
+	    this.p.add(p1); 
 	    this.p.add(this.btnReset);
 	    this.p.setBackground(new Color(210, 210, 210));
 	    this.f.add(this.p);
@@ -108,5 +115,10 @@ public class ViewImpl implements View {
 	@Override
 	public void setCollector(DataCollector dataCollector) {
 		this.dataCollector = dataCollector;
+	}
+
+	@Override
+	public void setFreq(String freq) {
+		this.lblFreq.setText("Sampling freq: " + freq + "Hz");
 	}
 }
