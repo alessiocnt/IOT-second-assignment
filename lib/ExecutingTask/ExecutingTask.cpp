@@ -16,8 +16,6 @@ void ExecutingTask::init(int period)
 
 void ExecutingTask::setSamplingFrequency(int frequency)
 {
-    Serial.println(frequency);
-    delay(2000);
     this->init(1000 / frequency);
 }
 
