@@ -17,6 +17,7 @@ void ExecutingTask::init(int period)
 void ExecutingTask::setSamplingFrequency(int frequency)
 {
     this->init(1000 / frequency);
+    MsgService.sendMsg("Freq:" + String(frequency));
 }
 
 void ExecutingTask::setCurrentTime(int time)
@@ -42,8 +43,8 @@ void ExecutingTask::tick()
         double distance = (double)sonar->getDistance();
         if (distance != -1 && distance < 2)
         {
-            double speed = ((distance - lastDistance) / myPeriod) * (double)1000;
-            double acceleration = ((speed - lastSpeed) / myPeriod) * (double)1000;
+            double speed = abs(((distance - lastDistance) / myPeriod) * (double)1000);
+            double acceleration = abs(((speed - lastSpeed) / myPeriod) * (double)1000);
             MsgService.sendMsg("Data:" + String(currentTime) + "," + String(distance) + "," + String(speed) + "," + String(acceleration));
             setServoMotorSpeed(speed);
             lastSpeed = speed;
