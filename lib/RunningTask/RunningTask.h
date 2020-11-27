@@ -10,18 +10,19 @@
 #include "Led.h"
 
 // Class that models a RunningTask - From ButtonStart to object relevation
-class RunningTask: public Task {
+class RunningTask : public Task
+{
 private:
-  int currentTime;
-  Button* stopBtt;
-  Sonar* sonar;
-  Led* led2;
-  void setupTask();
-  
+    int currentTime;
+    Button *stopBtt;
+    Sonar *sonar;
+    Led *led2;
+    void setupTask();
+
 public:
-  RunningTask(Button* stopBtt, Sonar* sonar, Led* led2);  
-  void init(int period);  
-  void tick();
+    RunningTask(Button *stopBtt, Sonar *sonar, Led *led2);
+    void init(int period);
+    void tick();
 };
 
 #endif

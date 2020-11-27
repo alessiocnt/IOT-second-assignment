@@ -10,7 +10,11 @@ class EndTask : public Task
 {
 private:
     Led *led;
-    bool blinked = false;
+    enum
+    {
+        NOT_BLINKING,
+        BLINKING
+    } state;
 
 public:
     EndTask(Led *led2);

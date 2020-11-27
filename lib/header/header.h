@@ -5,8 +5,7 @@
 #define MAX_TIME 20000
 #define ERROR_TIME 2000
 #define MAX_SPEED 0.15
-#define SCHEDULER_FREQ 5
-// MAXVEL TBD
+#define SCHEDULER_FREQ 10
 
 #define TEMPERATURE_PIN 7
 #define POT_PIN A0

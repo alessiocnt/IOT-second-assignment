@@ -1,15 +1,18 @@
 #include "ServoMovementTask.h"
 
-ServoMovementTask::ServoMovementTask(ServoMotor* servoMotor) {
+ServoMovementTask::ServoMovementTask(ServoMotor *servoMotor)
+{
     this->position = 180;
     this->nextPosition = 0;
     this->servoMotor = servoMotor;
 }
 
-void ServoMovementTask::init(int period) {
+void ServoMovementTask::init(int period)
+{
     MsgService.sendMsg("Initializing servo");
     servoMotor->on();
-    while(position > 0) {
+    while (position > 0)
+    {
         position -= 1;
         setServoPosition(position);
         delay(INIT_DELAY);
@@ -18,22 +21,29 @@ void ServoMovementTask::init(int period) {
     Task::init(period);
 }
 
-void ServoMovementTask::setPosition(int position) {
+void ServoMovementTask::setPosition(int position)
+{
     nextPosition = position;
 }
 
-void ServoMovementTask::tick() {
-    if (position == nextPosition) {
+void ServoMovementTask::tick()
+{
+    if (position == nextPosition)
+    {
         return;
     }
-    if (position > nextPosition) {
+    if (position > nextPosition)
+    {
         position -= DELTA;
-    } else {
+    }
+    else
+    {
         position += DELTA;
     }
     setServoPosition(position);
 }
 
-void ServoMovementTask::setServoPosition(int position) {
+void ServoMovementTask::setServoPosition(int position)
+{
     servoMotor->setPosition(position);
 }

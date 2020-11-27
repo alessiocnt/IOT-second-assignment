@@ -10,15 +10,16 @@
 #define DELTA 10
 #define INIT_DELAY 15
 
-class ServoMovementTask : public Task {
+class ServoMovementTask : public Task
+{
 private:
     int position;
     int nextPosition;
-    ServoMotor* servoMotor;
+    ServoMotor *servoMotor;
     void setServoPosition(int position);
 
 public:
-    ServoMovementTask(ServoMotor* servoMotor);
+    ServoMovementTask(ServoMotor *servoMotor);
     void init(int period);
     void setPosition(int position);
     void tick();

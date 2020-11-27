@@ -1,9 +1,7 @@
 #include "SleepingTask.h"
 
-
-SleepingTask::SleepingTask(Pir* pir)
+SleepingTask::SleepingTask(Pir *pir)
 {
-    this->id = "SleepingT";
     this->pir = pir;
 }
 
@@ -16,8 +14,8 @@ void SleepingTask::tick()
 {
     //Interrupt abilitati
     enableInterrupt(pir->getPin(), wakeUp, RISING);
-    //Sleep mode ON 
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
+    //Sleep mode ON
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
     sleep_enable();
     sleep_mode();
     //L'esecuzione riprende qui - Sleep mode OFF

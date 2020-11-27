@@ -6,9 +6,8 @@
 class Task
 {
 public:
-    String id; //togli
     int myPeriod;
-    
+
     virtual void init(int period)
     {
         myPeriod = period;

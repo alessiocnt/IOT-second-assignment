@@ -9,13 +9,19 @@
 #include "MsgService.h"
 
 // Class that models an ErrorTask - led blinking
-class ErrorTask: public Task {
+class ErrorTask : public Task
+{
 private:
-    Led* led2;
-    bool blinked = false;
+    Led *led2;
+    enum
+    {
+        NOT_BLINKING,
+        BLINKING
+    } state;
+
 public:
-    ErrorTask(Led* led2);  
-    void init(int period);  
+    ErrorTask(Led *led2);
+    void init(int period);
     void tick();
 };
 

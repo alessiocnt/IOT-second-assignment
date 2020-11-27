@@ -2,13 +2,14 @@
 #define __BUTTON__
 
 // Class that models a Button
-class Button {
-public: 
+class Button
+{
+public:
     Button(int pin);
     bool isPressed();
 
 private:
-  int pin;
+    int pin;
 };
 
 #endif

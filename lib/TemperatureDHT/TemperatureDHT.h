@@ -13,7 +13,7 @@ public:
 
 private:
     int pin;
-    DHT* dht;
+    DHT *dht;
 };
 
 #endif

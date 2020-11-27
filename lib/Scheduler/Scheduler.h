@@ -5,14 +5,15 @@
 #include "Task.h"
 
 // Class that models a simple Scheduler
-class Scheduler {
-  int basePeriod;
-  LinkedList<Task*> taskList;
+class Scheduler
+{
+    int basePeriod;
+    LinkedList<Task *> taskList;
 
 public:
-  void init(int basePeriod);  
-  virtual void addTask(Task* task);
-  virtual void schedule();
+    void init(int basePeriod);
+    virtual void addTask(Task *task);
+    virtual void schedule();
 };
 
 #endif

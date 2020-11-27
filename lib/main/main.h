@@ -12,15 +12,15 @@
 #include "ServoMotor.h"
 #include "ServoMovementTask.h"
 
-extern ReadyTask* readyTask;
-extern RunningTask* runningTask;
-extern SleepingTask* sleepingTask;
-extern ExecutingTask* executingTask;
-extern EndTask* endTask;
-extern ErrorTask* errorTask;
-extern BlinkTask* blinkTask;
-extern EndExperimentTask* endExperimentTask;
-extern BlinkTask* blinkTask;
-extern ServoMovementTask* servoMovementTask;
+extern ReadyTask *readyTask;
+extern RunningTask *runningTask;
+extern SleepingTask *sleepingTask;
+extern ExecutingTask *executingTask;
+extern EndTask *endTask;
+extern ErrorTask *errorTask;
+extern BlinkTask *blinkTask;
+extern EndExperimentTask *endExperimentTask;
+extern BlinkTask *blinkTask;
+extern ServoMovementTask *servoMovementTask;
 
 #endif

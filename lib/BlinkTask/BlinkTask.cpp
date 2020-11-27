@@ -1,35 +1,42 @@
 #include "BlinkTask.h"
 
-BlinkTask::BlinkTask(){this->id = "BlinkT";}
+BlinkTask::BlinkTask() {}
 
 // Il period si traduce in tempo di blink
-void BlinkTask::init(int period, Led* led, int timeToBlink){
-  Task::init(period);
-  this->led = led;
-  this->timeToBlink = timeToBlink;
-  setupTask();  
+void BlinkTask::init(int period, Led *led, int timeToBlink)
+{
+    Task::init(period);
+    this->led = led;
+    this->timeToBlink = timeToBlink;
+    setupTask();
 }
-  
-void BlinkTask::tick(){
+
+void BlinkTask::tick()
+{
     currentTime += this->myPeriod;
-    if(timeToBlink == BLINK_FOREVER || currentTime < timeToBlink){ 
-        switch (lightState){
-            case OFF:
+    if (timeToBlink == BLINK_FOREVER || currentTime < timeToBlink)
+    {
+        switch (lightState)
+        {
+        case OFF:
             led->switchOn();
-            lightState = ON; 
+            lightState = ON;
             break;
-            case ON:
+        case ON:
             led->switchOff();
             lightState = OFF;
             break;
         }
-    }else{
+    }
+    else
+    {
         this->setActive(false);
         setupTask();
     }
 }
 
-void BlinkTask::setupTask() {
+void BlinkTask::setupTask()
+{
     currentTime = 0;
     lightState = OFF;
 }

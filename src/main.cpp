@@ -6,29 +6,30 @@
 #include "Scheduler.h"
 #include "MsgService.h"
 
-ReadyTask* readyTask;
-RunningTask* runningTask;
-SleepingTask* sleepingTask;
-ExecutingTask* executingTask;
-EndTask* endTask;
-ErrorTask* errorTask;
-BlinkTask* blinkTask;
-EndExperimentTask* endExperimentTask;
-ServoMovementTask* servoMovementTask;
+ReadyTask *readyTask;
+RunningTask *runningTask;
+SleepingTask *sleepingTask;
+ExecutingTask *executingTask;
+EndTask *endTask;
+ErrorTask *errorTask;
+BlinkTask *blinkTask;
+EndExperimentTask *endExperimentTask;
+ServoMovementTask *servoMovementTask;
 
-TemperatureDHT* temperatureDHT;
-Potentiometer* potentiometer;
-ServoMotor* servoMotor;
-Led* led1;
-Led* led2;
-Button* buttonStart;
-Button* buttonStop;
-Sonar* sonar;
-Pir* pir;
+TemperatureDHT *temperatureDHT;
+Potentiometer *potentiometer;
+ServoMotor *servoMotor;
+Led *led1;
+Led *led2;
+Button *buttonStart;
+Button *buttonStop;
+Sonar *sonar;
+Pir *pir;
 
 Scheduler scheduler;
 
-void createSensors() {
+void createSensors()
+{
     temperatureDHT = new TemperatureDHT(TEMPERATURE_PIN);
     potentiometer = new Potentiometer(POT_PIN);
     servoMotor = new ServoMotor(SERVO_PIN);
@@ -40,7 +41,8 @@ void createSensors() {
     pir = new Pir(PIR_PIN);
 }
 
-void createTasks() {
+void createTasks()
+{
     readyTask = new ReadyTask(led1, led2, buttonStart, potentiometer, temperatureDHT);
     runningTask = new RunningTask(buttonStop, sonar, led2);
     sleepingTask = new SleepingTask(pir);
@@ -52,7 +54,8 @@ void createTasks() {
     servoMovementTask = new ServoMovementTask(servoMotor);
 }
 
-void setupTasks() {
+void setupTasks()
+{
     int MCD = 50;
     readyTask->init(MCD);
     scheduler.addTask(readyTask);
@@ -63,16 +66,16 @@ void setupTasks() {
     sleepingTask->init(MCD);
     scheduler.addTask(sleepingTask);
 
-    errorTask->init(2*MCD);
+    errorTask->init(2 * MCD);
     scheduler.addTask(errorTask);
-    
+
     executingTask->init(MCD);
     scheduler.addTask(executingTask);
 
     endExperimentTask->init(MCD);
     scheduler.addTask(endExperimentTask);
 
-    endTask->init(2*MCD);
+    endTask->init(2 * MCD);
     scheduler.addTask(endTask);
 
     scheduler.addTask(blinkTask);

@@ -2,7 +2,6 @@
 
 ReadyTask::ReadyTask(Led *led1, Led *led2, Button *startBtt, Potentiometer *pot, TemperatureDHT *dhtSensor)
 {
-    this->id = "ReadyT";
     this->led1 = led1;
     this->led2 = led2;
     this->startBtt = startBtt;

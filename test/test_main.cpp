@@ -11,7 +11,7 @@
 
 void testLed(int pin)
 {
-    Led* led = new Led(pin);
+    Led *led = new Led(pin);
     Serial.print("Turning on for 1 sec led on pin: ");
     Serial.println(pin);
     led->switchOn();
@@ -38,10 +38,11 @@ void testButton(int pin)
 
 void testTemp(int pin)
 {
-    TemperatureDHT* tmp = new TemperatureDHT(pin);
+    TemperatureDHT *tmp = new TemperatureDHT(pin);
     Serial.print("Measured temperature using class: ");
     delay(2000);
-    for(int i = 0; i < 50; i++) {
+    for (int i = 0; i < 50; i++)
+    {
         Serial.println(tmp->getValue());
         delay(250);
     }
@@ -104,7 +105,7 @@ void testServoMotor(int pin)
     delay(5000);
     for (int i = 0; i < 4; i++)
     {
-        
+
         for (int i = 0; i < 180; i++)
         {
             Serial.println(pos);
@@ -112,7 +113,7 @@ void testServoMotor(int pin)
             delay(15);
             pos += delta;
         }
-        
+
         pos -= delta;
         delta = -delta;
         delay(1000);
@@ -139,8 +140,8 @@ void loop()
     // testButton(5);
     //testPot(A0);
     // testPir(8);
-     // testSonar(13, 12, 20);
-     testServoMotor(6);
+    // testSonar(13, 12, 20);
+    testServoMotor(6);
     UNITY_END();
     return;
 }

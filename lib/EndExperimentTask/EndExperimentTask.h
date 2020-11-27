@@ -7,12 +7,13 @@
 #include "Task.h"
 #include "Button.h"
 
-class EndExperimentTask : public Task {
+class EndExperimentTask : public Task
+{
 private:
-    Button* button;
+    Button *button;
 
 public:
-    EndExperimentTask(Button* buttonStop);
+    EndExperimentTask(Button *buttonStop);
     void init(int period);
     void tick();
 };

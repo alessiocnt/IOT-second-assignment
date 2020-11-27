@@ -2,13 +2,15 @@
 #define __LED__
 
 // Class that models a Led
-class Led { 
+class Led
+{
 public:
-  Led(int pin);
-  void switchOn();
-  void switchOff();    
+    Led(int pin);
+    void switchOn();
+    void switchOff();
+
 private:
-  int pin;  
+    int pin;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "ExecutingTask.h"
 
-ExecutingTask::ExecutingTask(Led* led2, Sonar* sonar) {
-    this->id = "ExecT"; //togli
+ExecutingTask::ExecutingTask(Led *led2, Sonar *sonar)
+{
     this->led2 = led2;
     this->sonar = sonar;
     this->lastSpeed = 0;
@@ -9,32 +9,41 @@ ExecutingTask::ExecutingTask(Led* led2, Sonar* sonar) {
     this->tLastPrint = 0;
 }
 
-void ExecutingTask::init(int period) {
+void ExecutingTask::init(int period)
+{
     Task::init(period);
 }
 
-void ExecutingTask::setSamplingFrequency(int frequency) {
+void ExecutingTask::setSamplingFrequency(int frequency)
+{
+    Serial.println(frequency);
+    delay(2000);
     this->init(1000 / frequency);
-    //this->init(1000);
 }
 
-void ExecutingTask::setCurrentTime(int time) {
+void ExecutingTask::setCurrentTime(int time)
+{
     currentTime = time;
 }
 
-void ExecutingTask::setTemperature(int temperature) {
+void ExecutingTask::setTemperature(int temperature)
+{
     sonar->setTemperature(temperature);
 }
 
-void ExecutingTask::setFirstDistance(float distance) {
+void ExecutingTask::setFirstDistance(float distance)
+{
     lastDistance = (double)distance;
 }
 
-void ExecutingTask::tick() {
+void ExecutingTask::tick()
+{
     currentTime += myPeriod;
-    if(currentTime < MAX_TIME) {
+    if (currentTime < MAX_TIME)
+    {
         double distance = (double)sonar->getDistance();
-        if (distance != -1 && distance < 2) {
+        if (distance != -1 && distance < 2)
+        {
             double speed = ((distance - lastDistance) / myPeriod) * (double)1000;
             double acceleration = ((speed - lastSpeed) / myPeriod) * (double)1000;
             MsgService.sendMsg("Data:" + String(currentTime) + "," + String(distance) + "," + String(speed) + "," + String(acceleration));
@@ -42,14 +51,17 @@ void ExecutingTask::tick() {
             lastSpeed = speed;
             lastDistance = distance;
         }
-    } else {
+    }
+    else
+    {
         this->setActive(false);
         led2->switchOff();
         endTask->setActive(true);
     }
 }
 
-void ExecutingTask::setServoMotorSpeed(double speed){
+void ExecutingTask::setServoMotorSpeed(double speed)
+{
     int pos = map(abs(speed) * 100, 0, 200, 0, 18);
     servoMovementTask->setPosition(pos * 10);
 }

@@ -10,10 +10,11 @@
 #include "Led.h"
 #include "MsgService.h"
 
-class ExecutingTask : public Task {
+class ExecutingTask : public Task
+{
 private:
-    Led* led2;
-    Sonar* sonar;
+    Led *led2;
+    Sonar *sonar;
     double lastDistance;
     double lastSpeed;
     int currentTime;
@@ -22,7 +23,7 @@ private:
     void setServoMotorSpeed(double speed);
 
 public:
-    ExecutingTask(Led* led2, Sonar* sonar);
+    ExecutingTask(Led *led2, Sonar *sonar);
     void init(int period);
     void setSamplingFrequency(int frequency);
     void setCurrentTime(int time);

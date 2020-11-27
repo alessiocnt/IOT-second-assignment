@@ -1,16 +1,17 @@
 #ifndef __POTENTIOMETER__
 #define __POTENTIOMETER__
 #define MIN_FREQUENCY 1
-#define MAX_FREQUENCY 10
+#define MAX_FREQUENCY 5
 
 // Class that models a Potentiometer
-class Potentiometer {
-public: 
+class Potentiometer
+{
+public:
     Potentiometer(int pin);
     int getValue();
 
 private:
-  int pin;
+    int pin;
 };
 
 #endif
