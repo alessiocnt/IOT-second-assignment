@@ -11,5 +11,5 @@ Potentiometer::Potentiometer(int pin)
 int Potentiometer::getValue()
 {
     int value = 10 * map(analogRead(pin), 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
-    return value == 30 ? 25 : value;
+    return value == 30 ? 25 : value;    // aggiustamento necessario per avere un numero intero nel momento in cui si calcola il periodo.
 }

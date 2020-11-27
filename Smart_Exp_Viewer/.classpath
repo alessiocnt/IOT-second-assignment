@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/jssc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Utente/Documents/eclipse-workspace/Smart_Exp_Viewer/lib/xchart.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alece/OneDrive - Alma Mater Studiorum Università di Bologna/Terzo anno/IOT/IOT-Assignment/second-assignment/Smart_Exp_Viewer/lib/xchart.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
