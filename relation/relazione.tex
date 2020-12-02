@@ -43,12 +43,16 @@ Talvolta questi possono utilizzare, per meglio gestire il periodo d'esecuzione, 
 Abbiamo abbracciato il paradigma ad oggetti: ogni sensore e attuatore è stato modellato attraverso una classe in c++ con la rispettiva interfaccia, così come ogni task.
 
 A far procedere il sistema è uno scheduler cooperativo implementato tramite una lista. A seconda del proprio periodo di funzionamento questo richiama all'azione i vari task "attivi" per i quali è trascorso un tempo congruo al loro periodo.
+Ogni task terminato il suo compito (che può perdurare anche per più cicli d'esecuzione) se necessario, resetta la sua condizione interna e predispone all'azione il task che lo seguirà secondo lo sviluppo lineare del sistema.
+Ogni task predispone quindi il sistema settando active o meno i vari task successivi, ma resta compito dello scheduler dare la parola ai vari task nel momento opportuno.
+Siamo consapevoli della minor modularità del codice: così facendo nel caso in cui si debbano aggiungere task per un ampliamento del sistema, il flusso di sviluppo deve essere ridisegnato agendo direttamente su ogni task interessato alla variazione.
+Abbiamo comunque portato avanti la nostra scelta in quanto i task svolgono lavori molto specifici. Inoltre, considerando il fatto che il sistema è di dimensioni limitate ci sembrava eccessivo dare in carico la gestione del flusso nel tempo dei task allo scheduler o ad un task apposito.
 
 Per lo sviluppo abbiamo cercato di mantenere minimale il tempo d'esecuzione di ogni task limitando al massimo il numero di operazioni che esso deve svolgere. Per questo motivo possiamo considerare praticamente nullo il tempo di esecuzione dei task rispetto al periodo con il quale ciclicamente vengono eseguiti. Grazie a questa considerazione semplificativa è stato facile tenere conto del tempo trascorso all'interno dei task stessi. Perciò il tempo trascorso dall'inizio di un task non è altro che il periodo del task moltiplicato per il numero di volte che tale task viene richiamato. Questo piccolo accorgimento ci ha permesso di tenere traccia facilmente delle tempistiche e delle varie sincronizzazioni.
 Punto cruciale del progetto è stato scegliere i periodi dei task in modo da non generare perdite di eventi.
 Non c'è realmente stato un reale problema di overrun in quanto il sistema è pensato per minimizzare il tempo di esecuzione di ogni task.
 
-\chapter{Task}
+\chapter{Task - descrizione di massima}
 \section{ReadyTask}
 ReadyTask è il primo stato in cui il sistema entra non appena viene acceso. 
 Questo task deve tenere conto del tempo trascorso in quanto deve passare a SleepingTask nel caso in cui non venga effettuato il passaggio a RunningTask in un tempo consono (SLEEP TIME).
