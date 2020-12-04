@@ -1,3 +1,8 @@
+/**
+*	Ceredi Simone - simone.ceredi@studio.unibo.it
+*	Conti Alessio - alessio.conti3@studio.unibo.it
+*/
+
 #include <Arduino.h>
 #include <EnableInterrupt.h>
 #include "main.h"

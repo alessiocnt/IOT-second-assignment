@@ -94,13 +94,13 @@ public class ViewImpl implements View {
 	@Override
 	public void setState(String state) {
 		this.lblState.setText("Current state: " + state);
-		  if(state.equals("End")) {
-			  this.btnReset.setEnabled(true);
-		  } else {
-			  this.btnReset.setEnabled(false);
-		  }
-		  this.lblState.repaint();
-		  this.btnReset.repaint();
+		if(state.equals("End")) {
+			this.btnReset.setEnabled(true);
+		} else {
+			this.btnReset.setEnabled(false);
+		}
+		this.lblState.repaint();
+		this.btnReset.repaint();
 	}
 
 	@Override
