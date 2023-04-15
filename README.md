@@ -1,29 +1,10 @@
-# README #
+# IOT second assignment #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Sistemi Embedded e IoT - a.a. 2020-2021
 
-### What is this repository for? ###
+Progetto #2 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Il progetto vuole modellare un sistema embedded per la valutazione real-time
+di esperimenti di cinematica. Questo deve tracciare la posizione, velocità e accelerazione di un corpo che si muove in linea retta.
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Per informazioni circa lo sviluppo del progetto si faccia riferimento alla [relazione dettagliata](relation/relazione.pdf)
